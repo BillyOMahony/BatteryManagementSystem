@@ -8,4 +8,6 @@ public interface sensorController {
 	
 	public float getBatteryTemperature();
 	
+	public float getStateOfCharge();
+	
 }
