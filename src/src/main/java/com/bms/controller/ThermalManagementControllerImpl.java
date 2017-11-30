@@ -15,12 +15,14 @@ public class ThermalManagementControllerImpl implements ThermalManagementControl
 	private float[] optimalTemp;
 	boolean leakageFlag, tempFlag;
 
-	private static PowerSavingModeController powerSavingModeController;
+	private PowerSavingModeController powerSavingModeController;
+	private static ThermalManagementControllerImpl thermalManagementControllerImpl;
 	
 	public ThermalManagementControllerImpl(ThermalManagementModel model, PrintThermalManagement view){
 		this.model = model;
 		this.view = view;
 		powerSavingModeController = PowerSavingModeControllerImpl.getInstance();
+		sensor = SensorControllerImpl.getInstance();
 
 	}
 
