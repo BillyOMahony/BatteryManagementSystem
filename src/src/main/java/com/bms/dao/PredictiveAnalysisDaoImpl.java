@@ -1,27 +1,22 @@
-package com.bms.dao;
+package src.main.java.com.bms.dao;
 
-public class PredictiveAnalysisDaoImpl implements PredictiveAnalysisDao {
+public class PredictiveAnalysisDaoImpl {
 
-	@Override
 	public float getDistance() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 2345;
 	}
 
-	@Override
 	public float getSoc() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return 1;
 	}
 
-	@Override
-	public void saveDistance() {
+	public void saveDistance(float dist) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void saveSoc() {
+	public void saveSoc(float soc) {
 		// TODO Auto-generated method stub
 		
 	}
