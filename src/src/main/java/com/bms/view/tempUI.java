@@ -6,15 +6,18 @@ import com.bms.controller.FaultDetection;
 import com.bms.controller.FaultDetectionImpl;
 import com.bms.controller.PowerSavingModeController;
 import com.bms.controller.PowerSavingModeControllerImpl;
+import com.bms.controller.ThermalManagementControllerImpl;
 
 public class tempUI {
 
 	private static FaultDetection fd;
 	private static PowerSavingModeController psmc;
+	private static ThermalManagementControllerImpl thermalManagementControllerImpl;
 
 	public static void main(String[] args) {
 		psmc = PowerSavingModeControllerImpl.getInstance();
 		fd = FaultDetectionImpl.getInstance();
+		thermalManagementControllerImpl = ThermalManagementControllerImpl.getInstance();
 		
 		HCI();
 	}
@@ -28,6 +31,7 @@ public class tempUI {
 			switch (input){
 				case "t":
 					//Run Thermal Management System
+					thermalManagementControllerImpl.callThermalManagementSystem();
 					break;
 				case "p":
 					//Run power saving system
@@ -38,6 +42,7 @@ public class tempUI {
 					break;
 				case "c":
 					//Run Charging and Discharging System
+					thermalManagementControllerImpl.callThermalManagementSystem();
 					break;
 				case "f":
 					fd.CallFaultDetectiomSystem();

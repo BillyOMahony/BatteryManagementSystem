@@ -27,7 +27,7 @@ public class SensorControllerImpl implements SensorController{
 	@Override
 	public float getBatteryTemperature() {
 		// TODO Auto-generated method stub
-		return 0.0f;
+		return 50.0f;
 	}
 
 	@Override
