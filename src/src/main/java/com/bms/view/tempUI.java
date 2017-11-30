@@ -2,15 +2,15 @@ package com.bms.view;
 
 import java.util.Scanner;
 
-import com.bms.controller.powerSavingModeController;
-import com.bms.controller.powerSavingModeControllerImpl;
+import com.bms.controller.PowerSavingModeController;
+import com.bms.controller.PowerSavingModeControllerImpl;
 
 public class tempUI {
 
-	private static powerSavingModeController psmc;
+	private static PowerSavingModeController psmc;
 	
 	public static void main(String[] args) {
-		psmc = powerSavingModeControllerImpl.getInstance();
+		psmc = PowerSavingModeControllerImpl.getInstance();
 		HCI();
 	}
 	

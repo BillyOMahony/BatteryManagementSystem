@@ -1,21 +1,21 @@
 package com.bms.controller;
 //Controller class
 
-import com.bms.model.thermalManagementModel;
-import com.bms.view.printThermalManagement;
+import com.bms.model.ThermalManagementModel;
+import com.bms.view.PrintThermalManagement;
 
-public class thermalManagementControllerImpl implements thermalManagementController{
+public class ThermalManagementControllerImpl implements ThermalManagementController{
 
-	private thermalManagementModel model;
-	private printThermalManagement view;
-	private sensorControllerImpl sensor;
+	private ThermalManagementModel model;
+	private PrintThermalManagement view;
+	private SensorControllerImpl sensor;
 	private float temperature;
 	private float velocity;
 	private float pressure;
 	private float optimalTemp;
 	boolean leakageFlag, tempFlag;
 
-	public thermalManagementControllerImpl(thermalManagementModel model, printThermalManagement view){
+	public ThermalManagementControllerImpl(ThermalManagementModel model, PrintThermalManagement view){
 		this.model = model;
 		this.view = view;
 	}

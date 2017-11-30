@@ -1,6 +1,6 @@
 package com.bms.controller;
 
-public interface thermalManagementController {
+public interface ThermalManagementController {
 
 	public void callThermalManagementSystem();
 	

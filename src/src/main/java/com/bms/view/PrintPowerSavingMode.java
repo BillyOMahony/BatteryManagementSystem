@@ -1,9 +1,9 @@
 package com.bms.view;
 
-public class printPowerSavingMode {
+public class PrintPowerSavingMode {
 
-	public printPowerSavingMode() {
-		System.out.println("printPowerSavingMode Created");
+	public PrintPowerSavingMode() {
+		System.out.println("PrintPowerSavingMode Created");
 	}
 	
 	public void printMessage(String PSMessage) {

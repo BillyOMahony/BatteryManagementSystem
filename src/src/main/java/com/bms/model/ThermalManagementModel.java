@@ -1,6 +1,6 @@
 package com.bms.model;
 
-public interface thermalManagementModel {
+public interface ThermalManagementModel {
 
 	public boolean checkTemperature(Float temperature);
 	

@@ -1,6 +1,6 @@
 package com.bms.view;
 
-public class printThermalManagement{
+public class PrintThermalManagement{
 	
 	public void DisplayThermalManagementMessage() {
 		

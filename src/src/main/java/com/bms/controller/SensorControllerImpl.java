@@ -1,8 +1,8 @@
 package com.bms.controller;
 
-public class sensorControllerImpl implements sensorController{
+public class SensorControllerImpl implements SensorController{
 
-	public sensorControllerImpl() {
+	public SensorControllerImpl() {
 		System.out.println("Sensor Created");
 	}
 	

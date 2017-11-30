@@ -3,7 +3,7 @@ package com.bms.controller;
 public class PredictiveAnalysisImpl implements PredictiveAnalysis {
 	/*
 	private PrintPredictiveAnalysis view;
-	private sensorControllerImpl sensor;
+	private SensorControllerImpl sensor;
 	private PredictiveAnalysisDaoImpl database;
 	private float soc;
 	private float distance;

@@ -1,6 +1,6 @@
 package com.bms.model;
 
-public class thermalManagementModelImpl implements thermalManagementModel{
+public class ThermalManagementModelImpl implements ThermalManagementModel{
 
 	@Override
 	public boolean checkTemperature(Float temperature) {

@@ -1,6 +1,6 @@
 package com.bms.controller;
 
-public interface sensorController {
+public interface SensorController {
 
 	public float getCoolantPressure();
 	

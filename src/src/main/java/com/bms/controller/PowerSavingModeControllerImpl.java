@@ -1,22 +1,22 @@
 package com.bms.controller;
 
-import com.bms.view.printPowerSavingMode;
+import com.bms.view.PrintPowerSavingMode;
 
-public class powerSavingModeControllerImpl implements powerSavingModeController{
+public class PowerSavingModeControllerImpl implements PowerSavingModeController{
 
 	private float[] optimalTemperatureRange;
 	private boolean powerSavingEnabled = false;
 	private float stateOfCharge = 0;
 	private String PSMessage;
-	private sensorControllerImpl sensor;
-	private printPowerSavingMode print;
+	private SensorControllerImpl sensor;
+	private PrintPowerSavingMode print;
 	
 	//Singleton
-	private static final powerSavingModeControllerImpl instance = new powerSavingModeControllerImpl();
+	private static final PowerSavingModeControllerImpl instance = new PowerSavingModeControllerImpl();
 	
-	private powerSavingModeControllerImpl() {
-		sensor = new sensorControllerImpl();
-		print = new printPowerSavingMode();
+	private PowerSavingModeControllerImpl() {
+		sensor = new SensorControllerImpl();
+		print = new PrintPowerSavingMode();
 	}
 	
 	@Override
@@ -73,7 +73,7 @@ public class powerSavingModeControllerImpl implements powerSavingModeController{
 		print.printMessage("Power Saving Mode is " + powerSavingEnabled);
 	}
 
-	public static powerSavingModeControllerImpl getInstance() {
+	public static PowerSavingModeControllerImpl getInstance() {
 		return instance;
 	}
 	
