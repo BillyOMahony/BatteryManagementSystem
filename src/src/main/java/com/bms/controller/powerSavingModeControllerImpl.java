@@ -11,7 +11,10 @@ public class powerSavingModeControllerImpl implements powerSavingModeController{
 	private sensorControllerImpl sensor;
 	private printPowerSavingMode print;
 	
-	public powerSavingModeControllerImpl() {
+	//Singleton
+	private static final powerSavingModeControllerImpl instance = new powerSavingModeControllerImpl();
+	
+	private powerSavingModeControllerImpl() {
 		sensor = new sensorControllerImpl();
 		print = new printPowerSavingMode();
 	}
@@ -68,6 +71,10 @@ public class powerSavingModeControllerImpl implements powerSavingModeController{
 		}
 		
 		print.printMessage("Power Saving Mode is " + powerSavingEnabled);
+	}
+
+	public static powerSavingModeControllerImpl getInstance() {
+		return instance;
 	}
 	
 }
