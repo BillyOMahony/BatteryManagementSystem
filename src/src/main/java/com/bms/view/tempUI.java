@@ -3,6 +3,7 @@ package com.bms.view;
 import java.util.Scanner;
 
 import com.bms.controller.FaultDetection;
+import com.bms.controller.FaultDetectionImpl;
 import com.bms.controller.PowerSavingModeController;
 import com.bms.controller.PowerSavingModeControllerImpl;
 
@@ -10,12 +11,14 @@ public class tempUI {
 
 	private static FaultDetection fd;
 	private static PowerSavingModeController psmc;
-	
+
 	public static void main(String[] args) {
 		psmc = PowerSavingModeControllerImpl.getInstance();
+		fd = FaultDetectionImpl.getInstance();
 		
 		HCI();
 	}
+	
 	
 	static void HCI() {
 		Scanner scanner = new Scanner(System. in);
@@ -38,6 +41,7 @@ public class tempUI {
 					break;
 				case "f":
 					fd.CallFaultDetectiomSystem();
+				
 					//Run fault detection
 					break;
 				case "all":
