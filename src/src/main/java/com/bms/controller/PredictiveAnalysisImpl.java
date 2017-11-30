@@ -1,3 +1,4 @@
+package com.bms.controller;
 
 public class PredictiveAnalysisImpl implements PredictiveAnalysis {
 	
