@@ -66,7 +66,7 @@ public class PowerSavingModeControllerImpl implements PowerSavingModeController{
 	@Override
 	public void TogglePowerSavingMode() {
 		powerSavingEnabled = !powerSavingEnabled;
-		if(stateOfCharge <= 0.2f) {
+		if(stateOfCharge >= 0.2f) {
 			powerSavingEnabled = true;
 		}
 		
