@@ -22,6 +22,7 @@ public class tempUI {
 					//Run Thermal Management System
 					break;
 				case "p":
+					//Run power saving system
 					psmc.CallPowerSavingSystem();
 					break;
 				case "a":

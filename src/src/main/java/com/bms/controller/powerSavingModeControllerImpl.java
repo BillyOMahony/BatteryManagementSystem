@@ -1,5 +1,7 @@
 package com.bms.controller;
 
+import com.bms.view.printPowerSavingMode;
+
 public class powerSavingModeControllerImpl implements powerSavingModeController{
 
 	private float[] optimalTemperatureRange;
@@ -7,6 +9,7 @@ public class powerSavingModeControllerImpl implements powerSavingModeController{
 	private float stateOfCharge = 0;
 	private String PSMessage;
 	private sensorControllerImpl sensor;
+	private printPowerSavingMode print;
 	
 	@Override
 	public void CallPowerSavingSystem() {
@@ -33,8 +36,8 @@ public class powerSavingModeControllerImpl implements powerSavingModeController{
 			PSMessage = "Power Saving Mode Disabled";
 		}
 		
+		print.printMessage(PSMessage);
 		SetOptimalTemperature();
-		
 	}
 	
 	/*
@@ -46,6 +49,9 @@ public class powerSavingModeControllerImpl implements powerSavingModeController{
 		}else {
 			optimalTemperatureRange = new float[] {30.0f, 40.0f};
 		}
+		
+		String temp = "Optimal Temperature Range: " + optimalTemperatureRange[0] + " -> " +optimalTemperatureRange[1];
+		print.printMessage(temp);
 	}
 
 	@Override
