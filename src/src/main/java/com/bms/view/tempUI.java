@@ -38,6 +38,10 @@ public class tempUI {
 				case "all":
 					//Run everything
 					break;
+				case "toggle":
+					//Toggles Power Saving Mode
+					psmc.TogglePowerSavingMode();
+					break;
 			}
 		}
 	}
