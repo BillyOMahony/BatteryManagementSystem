@@ -4,7 +4,7 @@ import com.bms.view.PrintPowerSavingMode;
 
 public class PowerSavingModeControllerImpl implements PowerSavingModeController{
 
-	private float[] optimalTemperatureRange;
+	private float[] optimalTemperatureRange = new float[]{20.0f, 30.0f};;
 	private boolean powerSavingEnabled = false;
 	private float stateOfCharge = 0;
 	private String PSMessage;
