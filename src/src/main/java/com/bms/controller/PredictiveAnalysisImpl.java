@@ -1,9 +1,9 @@
-package src.main.java.com.bms.controller;
+package com.bms.controller;
 
-import src.main.java.com.bms.dao.PredictiveAnalysisDaoImpl;
-import src.main.java.com.bms.view.PrintPredictiveAnalysis;
+import com.bms.dao.PredictiveAnalysisDaoImpl;
+import com.bms.view.PrintPredictiveAnalysis;
 
-public class PredictiveAnalysisImpl {
+public class PredictiveAnalysisImpl implements PredictiveAnalysis{
 	
 	private PrintPredictiveAnalysis view;
 	private SensorControllerImpl sensor;
@@ -16,10 +16,18 @@ public class PredictiveAnalysisImpl {
 	private float odometerDistance;
 
 	
-	public PredictiveAnalysisImpl(PrintPredictiveAnalysis view) {
-		this.view = view;
+	//This is a singleton, it is returned by getInstance()
+	private static final PredictiveAnalysisImpl instance = new PredictiveAnalysisImpl();
+	
+	//Private Constructor to ensure only one is ever made
+	private PredictiveAnalysisImpl() {
+		sensor = SensorControllerImpl.getInstance();
+		view = new PrintPredictiveAnalysis();
 	}
-
+	
+	public PredictiveAnalysisImpl getInstance() {
+		return instance;
+	}
 	
 	public float fuelEffCal() {
 		odometerDistance = sensor.getDistanceTravelled();
@@ -51,6 +59,15 @@ public class PredictiveAnalysisImpl {
 	
 	public void updateView() {
 		view.DisplayPredictiveAnalysisMessage();
+	}
+
+	@Override
+	public void CallPredictiveAnalysis() {
+		// TODO Auto-generated method stub
+		
+		// Implement this, think of it as main
+		//Call everything here in the order they need to be called every time Predictive Analysis is called. 
+		
 	}
 	
 }

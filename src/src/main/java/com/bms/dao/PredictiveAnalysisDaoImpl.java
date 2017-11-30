@@ -1,4 +1,4 @@
-package src.main.java.com.bms.dao;
+package com.bms.dao;
 
 public class PredictiveAnalysisDaoImpl {
 
