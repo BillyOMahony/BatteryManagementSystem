@@ -10,44 +10,16 @@ public class FaultDetectionImpl implements FaultDetection {
 	float soc;
 	private SensorControllerImpl sensor;
 	private PrintFaultDetection print;
-//	private printFaultDetection view;
-//	private sensorControllerImpl sensor;
-//	private FaultDetectionDaoImpl database;
+
 
 	private static final FaultDetectionImpl instance = new FaultDetectionImpl();
 	
 	private FaultDetectionImpl() {
-		sensor = sensor.getInstance();
+		sensor = SensorControllerImpl.getInstance();
 		print = new PrintFaultDetection();
 	}
 	
-//	
-//void CheckFault(float temperature, float velocity, float current, float soc) {
-//	FDMessage = "";
-//	if( temperature.Comparetemperature ) {
-//		FDMessage = "informal temperature";
-//		
-//	}if else(current.Comparecurrent){
-//		FDMessage = "informal current";
-//	}if else(velocity.tempeComparevelocity){
-//		FDMessage = "informal velocity ";
-//	}if else(soc.Comparesoc){
-//		FDMessage = "informal soc";
-//	}
-//	
-//	print.printMessage(DFMessage);
-//
-//	
-//}
-//
-//public void getSensorData() {
-//	// TODO Auto-generated method stub
-//	temperature = sensor.getTemperature();
-//	velocity = sensor.getVelocity();
-//	soc = sensor.getsoc();
-//	current = sensor.getcurrent();
-//
-//}
+
 	
 	public static FaultDetectionImpl getInstance() {
 		return instance;
@@ -56,9 +28,49 @@ public class FaultDetectionImpl implements FaultDetection {
 @Override
 public void CallFaultDetectiomSystem() {
 	// TODO Auto-generated method stub
-	print.printMessage("fd" );
+	velocity = sensor.getCoolantVelocity();
+	current = sensor.getCoolantCurrent();
+	temperature = sensor.getBatteryTemperature();
+	
+	
+	CheckVelocity();
+	CheckCurrent();
+	CheckTeperature();
 }
 
+public void CheckVelocity() {
+	FDMessage = "";
+	if(velocity <= 12.8 &&velocity >=12.0) {
+		FDMessage = "velocity is normal";
+		
+	}else{
+		FDMessage = "velocity is innormal ";
+	}
+	
+	print.printMessage(FDMessage);
+}
+public void CheckCurrent() {
+	FDMessage = "";
+	if(current <= 0.4 ) {
+		FDMessage = "current is normal";
+		
+	}else{
+		FDMessage = "current is innormal ";
+	}
+	
+	print.printMessage(FDMessage);
+}
+public void CheckTeperature() {
+	FDMessage = "";
+	if(temperature <= 75 && temperature >=20 ) {
+		FDMessage = "temperature is normal";
+		
+	}else{
+		FDMessage = "temperature is innormal ";
+	}
+	
+	print.printMessage(FDMessage);
+}
 
 }
 

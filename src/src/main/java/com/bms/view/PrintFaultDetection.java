@@ -1,13 +1,10 @@
 package com.bms.view;
 
 public class PrintFaultDetection {
-
-	public PrintFaultDetection() {
-		System.out.println("fault detected ");
-	}
 	
 	public void printMessage(String FDMessage) {
-		System.out.println("fault is: " + FDMessage);
+		System.out.println("Fault detection is running " );
+		System.out.println("Result for detection is: " + FDMessage);
 	}
 	
 }

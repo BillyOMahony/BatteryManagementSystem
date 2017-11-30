@@ -21,7 +21,7 @@ public class SensorControllerImpl implements SensorController{
 	@Override
 	public float getCoolantVelocity() {
 		// TODO Auto-generated method stub
-		return 0.0f;
+		return 12;
 	}
 
 	@Override
@@ -37,6 +37,12 @@ public class SensorControllerImpl implements SensorController{
 		//1 = 100%, 0 = 0%
 		
 		return 0.3f;
+	}
+
+	@Override
+	public float getCoolantCurrent() {
+		// TODO Auto-generated method stub
+		return 0.2f;
 	}
 	
 }
