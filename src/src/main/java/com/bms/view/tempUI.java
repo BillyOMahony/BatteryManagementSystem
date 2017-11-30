@@ -27,7 +27,7 @@ public class tempUI {
 		Scanner scanner = new Scanner(System. in);
 		while(true) {
 			String input = scanner.nextLine();
-
+			
 			switch (input){
 				case "t":
 					//Run Thermal Management System
@@ -56,6 +56,14 @@ public class tempUI {
 					//Toggles Power Saving Mode
 					psmc.TogglePowerSavingMode();
 					break;
+			}
+			
+			try {
+				System.out.println("Waiting 5 seconds...");
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}
