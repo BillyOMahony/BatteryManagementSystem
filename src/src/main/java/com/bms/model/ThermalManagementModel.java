@@ -2,10 +2,10 @@ package com.bms.model;
 
 public interface ThermalManagementModel {
 
-	public boolean checkTemperature(Float temperature);
+	public boolean checkTemperature(float temperature);
 	
-	public boolean checkCoolentLeak(Float velocity, Float Pressure);
+	public boolean checkCoolentLeak(float velocity, float Pressure);
 	
-	public void Compare(Float temperature, Float optimalTemperature);
+	public void Compare(float temperature, float[] optimalTemperature);
 	
 }

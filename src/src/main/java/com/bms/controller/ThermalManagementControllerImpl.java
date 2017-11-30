@@ -12,12 +12,16 @@ public class ThermalManagementControllerImpl implements ThermalManagementControl
 	private float temperature;
 	private float velocity;
 	private float pressure;
-	private float optimalTemp;
+	private float[] optimalTemp;
 	boolean leakageFlag, tempFlag;
 
+	private static PowerSavingModeController powerSavingModeController;
+	
 	public ThermalManagementControllerImpl(ThermalManagementModel model, PrintThermalManagement view){
 		this.model = model;
 		this.view = view;
+		powerSavingModeController = PowerSavingModeControllerImpl.getInstance();
+
 	}
 
 	@Override
@@ -26,14 +30,18 @@ public class ThermalManagementControllerImpl implements ThermalManagementControl
 		temperature = sensor.getBatteryTemperature();
 		velocity = sensor.getCoolantVelocity();
 		pressure = sensor.getCoolantPressure();
-		
-		leakageFlag = model.checkCoolentLeak(velocity, pressure);
+		optimalTemp = powerSavingModeController.GetOptimalTemperature();
+		//leakageFlag = model.checkCoolentLeak(velocity, pressure);
 		tempFlag = model.checkTemperature(temperature);
 		model.Compare(temperature, optimalTemp);
 	}
 
-	public void updateView(){				
-		view.DisplayThermalManagementMessage();
+	public void updateView(){	
+		String message = "";
+		if(tempFlag == true) {
+			message = "Emergency Evacuation Alert! Temperaure Exceeded normal range";
+		}
+		view.DisplayThermalManagementMessage(message);
 	}
 
 }
