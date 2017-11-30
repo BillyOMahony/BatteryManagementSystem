@@ -16,7 +16,6 @@ public class PredictiveAnalysisImpl implements PredictiveAnalysis {
 	}
 
 	
-	@Override
 	public float fuelEffCal() {
 		// TODO Auto-generated method stub
 		distance = database.getDistance();
