@@ -15,7 +15,7 @@ public class PowerSavingModeControllerImpl implements PowerSavingModeController{
 	private static final PowerSavingModeControllerImpl instance = new PowerSavingModeControllerImpl();
 	
 	private PowerSavingModeControllerImpl() {
-		sensor = new SensorControllerImpl();
+		sensor = SensorControllerImpl.getInstance();
 		print = new PrintPowerSavingMode();
 	}
 	

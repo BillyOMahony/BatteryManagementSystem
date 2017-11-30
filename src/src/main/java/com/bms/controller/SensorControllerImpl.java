@@ -2,8 +2,14 @@ package com.bms.controller;
 
 public class SensorControllerImpl implements SensorController{
 
-	public SensorControllerImpl() {
+	private static final SensorControllerImpl instance = new SensorControllerImpl();
+	
+	private SensorControllerImpl() {
 		System.out.println("Sensor Created");
+	}
+	
+	public static SensorControllerImpl getInstance(){
+		return instance;
 	}
 	
 	@Override
