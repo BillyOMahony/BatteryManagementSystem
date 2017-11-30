@@ -1,3 +1,4 @@
+package com.bms.dao;
 
 public class PredictiveAnalysisDaoImpl implements PredictiveAnalysisDao {
 
