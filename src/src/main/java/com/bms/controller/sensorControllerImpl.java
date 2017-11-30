@@ -2,22 +2,26 @@ package com.bms.controller;
 
 public class sensorControllerImpl implements sensorController{
 
+	public sensorControllerImpl() {
+		System.out.println("Sensor Created");
+	}
+	
 	@Override
 	public float getCoolantPressure() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 0.0f;
 	}
 
 	@Override
 	public float getCoolantVelocity() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 0.0f;
 	}
 
 	@Override
 	public float getBatteryTemperature() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 0.0f;
 	}
 
 	@Override

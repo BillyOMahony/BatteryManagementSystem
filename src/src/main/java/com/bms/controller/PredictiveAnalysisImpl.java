@@ -1,7 +1,7 @@
 package com.bms.controller;
 
 public class PredictiveAnalysisImpl implements PredictiveAnalysis {
-	
+	/*
 	private PrintPredictiveAnalysis view;
 	private sensorControllerImpl sensor;
 	private PredictiveAnalysisDaoImpl database;
@@ -37,6 +37,6 @@ public class PredictiveAnalysisImpl implements PredictiveAnalysis {
 	public void updateView() {
 		view.DisplayPredictiveAnalysisMessage();
 	}
-	
+	*/
 }
 

@@ -11,6 +11,11 @@ public class powerSavingModeControllerImpl implements powerSavingModeController{
 	private sensorControllerImpl sensor;
 	private printPowerSavingMode print;
 	
+	public powerSavingModeControllerImpl() {
+		sensor = new sensorControllerImpl();
+		print = new printPowerSavingMode();
+	}
+	
 	@Override
 	public void CallPowerSavingSystem() {
 	
@@ -55,7 +60,7 @@ public class powerSavingModeControllerImpl implements powerSavingModeController{
 	}
 
 	@Override
-	public float[] GetOptimalTemperature() {	
+	public float[] GetOptimalTemperature() {
 		return optimalTemperatureRange;
 	}
 	

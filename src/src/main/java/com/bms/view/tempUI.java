@@ -9,6 +9,7 @@ public class tempUI {
 	private static powerSavingModeControllerImpl psmc;
 	
 	public static void main(String[] args) {
+		psmc = new powerSavingModeControllerImpl();
 		HCI();
 	}
 	
