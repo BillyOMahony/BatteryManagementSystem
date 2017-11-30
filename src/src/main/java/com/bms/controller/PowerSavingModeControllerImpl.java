@@ -1,5 +1,6 @@
 package com.bms.controller;
 
+import com.bms.model.PowerSavingModeModelImpl;
 import com.bms.view.PrintPowerSavingMode;
 
 public class PowerSavingModeControllerImpl implements PowerSavingModeController{
@@ -10,6 +11,7 @@ public class PowerSavingModeControllerImpl implements PowerSavingModeController{
 	private String PSMessage;
 	private SensorControllerImpl sensor;
 	private PrintPowerSavingMode print;
+	private PowerSavingModeModelImpl model = PowerSavingModeModelImpl.getInstance();
 	
 	//Singleton
 	private static final PowerSavingModeControllerImpl instance = new PowerSavingModeControllerImpl();
@@ -25,30 +27,8 @@ public class PowerSavingModeControllerImpl implements PowerSavingModeController{
 		// Get State of Charge
 		stateOfCharge = sensor.getStateOfCharge();
 		
-		CheckPowerSavingStatus(powerSavingEnabled, stateOfCharge);
-	}
-
-	private void CheckPowerSavingStatus(boolean powerSavingEnabled, float stateOfCharge) {
-		PSMessage = "";
-		if(powerSavingEnabled || stateOfCharge <= .2f) {
-			PSMessage = "Power Saving Mode Enabled";
-		}else{
-			PSMessage = "Power Saving Mode Disabled";
-		}
-		
-		print.printMessage(PSMessage);
-		SetOptimalTemperature();
-	}
-	
-	private void SetOptimalTemperature() {
-		if(powerSavingEnabled) {
-			optimalTemperatureRange = new float[]{20.0f, 30.0f};
-		}else {
-			optimalTemperatureRange = new float[] {30.0f, 40.0f};
-		}
-		
-		String temp = "Optimal Temperature Range: " + optimalTemperatureRange[0] + " -> " +optimalTemperatureRange[1];
-		print.printMessage(temp);
+		model.CheckPowerSavingStatus(powerSavingEnabled, stateOfCharge);
+		model.SetOptimalTemperature(powerSavingEnabled);
 	}
 
 	@Override
