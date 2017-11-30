@@ -41,6 +41,7 @@ public class PowerSavingModeModelImpl implements PowerSavingModeModel{
 		return optimalTemperatureRange;
 	}
 
+	
 	public static PowerSavingModeModelImpl getInstance() {
 		return instance;
 	}

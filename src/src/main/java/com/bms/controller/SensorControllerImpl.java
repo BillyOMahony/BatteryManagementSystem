@@ -44,5 +44,11 @@ public class SensorControllerImpl implements SensorController{
 		// TODO Auto-generated method stub
 		return 0.2f;
 	}
+
+	@Override
+	public float getDistanceTravelled() {
+		// TODO Auto-generated method stub
+		return 8008.5f;
+	}
 	
 }
