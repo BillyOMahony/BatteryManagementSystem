@@ -21,6 +21,9 @@ public class powerSavingModeControllerImpl implements powerSavingModeController{
 		CheckPowerSavingStatus(powerSavingEnabled, stateOfCharge);
 	}
 
+	/*
+	 * 
+	 */
 	private void CheckPowerSavingStatus(boolean powerSavingEnabled, float stateOfCharge) {
 		PSMessage = "";
 		if(powerSavingEnabled || stateOfCharge <= .2f) {
@@ -33,7 +36,10 @@ public class powerSavingModeControllerImpl implements powerSavingModeController{
 		SetOptimalTemperature();
 		
 	}
-
+	
+	/*
+	 * 
+	 */
 	private void SetOptimalTemperature() {
 		if(powerSavingEnabled) {
 			optimalTemperatureRange = new float[]{20.0f, 30.0f};
