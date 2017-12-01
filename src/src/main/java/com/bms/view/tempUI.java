@@ -52,10 +52,14 @@ public class tempUI {
 			case "c":
 				// Run Charging System
 				chargingControllerImpl.callChargingSystem();
+				thermalManagementControllerImpl.callThermalManagementSystem();
+				fd.CallFaultDetectiomSystem();
 				break;
 			case "d":
 				// Run Discharging System
 				dischargingControllerImpl.callDischargingSystem();
+				thermalManagementControllerImpl.callThermalManagementSystem();
+				fd.CallFaultDetectiomSystem();
 				break;
 			case "f":
 				fd.CallFaultDetectiomSystem();

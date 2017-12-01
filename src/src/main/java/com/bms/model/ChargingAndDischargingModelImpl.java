@@ -1,5 +1,6 @@
 package com.bms.model;
 
+import com.bms.controller.PowerSavingModeControllerImpl;
 import com.bms.controller.SensorControllerImpl;
 
 public class ChargingAndDischargingModelImpl implements ChargingAndDischargingModel {
@@ -18,7 +19,9 @@ public class ChargingAndDischargingModelImpl implements ChargingAndDischargingMo
 	@Override
 	public float checkBatteryLevel(float batteryPercentage, boolean ischarging) {
 		if (batteryPercentage <= 5) {
-			warnUser("Battery is critically low, please charge to continue:");
+			warnUser("Battery is critically low, please charge to continue");
+			warnUser("Power saving mode started");
+			PowerSavingModeControllerImpl.getInstance().CallPowerSavingSystem();
 		} else if (batteryPercentage == 100) {
 			warnUser("Battery is full, please unplug");
 		}
