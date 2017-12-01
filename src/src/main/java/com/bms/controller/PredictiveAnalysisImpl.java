@@ -21,6 +21,7 @@ public class PredictiveAnalysisImpl implements PredictiveAnalysis{
 	
 	//Private Constructor to ensure only one is ever made
 	private PredictiveAnalysisImpl() {
+		database = new PredictiveAnalysisDaoImpl();
 		sensor = SensorControllerImpl.getInstance();
 		view = new PrintPredictiveAnalysis();
 	}
@@ -44,6 +45,9 @@ public class PredictiveAnalysisImpl implements PredictiveAnalysis{
 	public float rangeCalculator() {
 		range = sensor.getStateOfCharge() * fuelEffCal();
 		range = Math.round(range);
+		
+		System.out.println("Predictive Analysis: Range is " + range);
+		
 		return range;
 	}
 	
