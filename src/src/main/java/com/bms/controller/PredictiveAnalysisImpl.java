@@ -25,7 +25,7 @@ public class PredictiveAnalysisImpl implements PredictiveAnalysis{
 		view = new PrintPredictiveAnalysis();
 	}
 	
-	public PredictiveAnalysisImpl getInstance() {
+	public static PredictiveAnalysisImpl getInstance() {
 		return instance;
 	}
 	

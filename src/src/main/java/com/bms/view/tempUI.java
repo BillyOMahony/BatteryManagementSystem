@@ -6,6 +6,7 @@ import com.bms.controller.FaultDetection;
 import com.bms.controller.FaultDetectionImpl;
 import com.bms.controller.PowerSavingModeController;
 import com.bms.controller.PowerSavingModeControllerImpl;
+import com.bms.controller.PredictiveAnalysisImpl;
 import com.bms.controller.ThermalManagementControllerImpl;
 
 public class tempUI {
@@ -13,11 +14,13 @@ public class tempUI {
 	private static FaultDetection fd;
 	private static PowerSavingModeController psmc;
 	private static ThermalManagementControllerImpl thermalManagementControllerImpl;
+	private static PredictiveAnalysisImpl pa;
 
 	public static void main(String[] args) {
 		psmc = PowerSavingModeControllerImpl.getInstance();
 		fd = FaultDetectionImpl.getInstance();
 		thermalManagementControllerImpl = ThermalManagementControllerImpl.getInstance();
+		pa = PredictiveAnalysisImpl.getInstance();
 		
 		HCI();
 	}
@@ -39,6 +42,7 @@ public class tempUI {
 					break;
 				case "a":
 					//Run Predictive Analysis System
+					pa.CallPredictiveAnalysis();
 					break;
 				case "c":
 					//Run Charging and Discharging System
