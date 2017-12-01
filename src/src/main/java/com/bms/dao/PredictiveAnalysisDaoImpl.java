@@ -8,7 +8,7 @@ public class PredictiveAnalysisDaoImpl {
 
 	public float getSoc() {
 		
-		return 1;
+		return 0.33f;
 	}
 
 	public void saveDistance(float dist) {

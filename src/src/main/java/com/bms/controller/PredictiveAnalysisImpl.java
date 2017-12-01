@@ -46,7 +46,7 @@ public class PredictiveAnalysisImpl implements PredictiveAnalysis{
 		range = sensor.getStateOfCharge() * fuelEffCal();
 		range = Math.round(range);
 		
-		System.out.println("Predictive Analysis: Range is " + range);
+		System.out.println("Predictive Analysis: Range is " + range + "km");
 		
 		return range;
 	}
