@@ -67,7 +67,7 @@ public class PredictiveAnalysisImpl implements PredictiveAnalysis{
 		
 		// Implement this, think of it as main
 		//Call everything here in the order they need to be called every time Predictive Analysis is called. 
-		
+		rangeCalculator();
 	}
 	
 }
