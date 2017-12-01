@@ -8,6 +8,7 @@ import com.bms.controller.FaultDetection;
 import com.bms.controller.FaultDetectionImpl;
 import com.bms.controller.PowerSavingModeController;
 import com.bms.controller.PowerSavingModeControllerImpl;
+import com.bms.controller.PredictiveAnalysisImpl;
 import com.bms.controller.ThermalManagementControllerImpl;
 
 public class tempUI {
@@ -17,6 +18,7 @@ public class tempUI {
 	private static ThermalManagementControllerImpl thermalManagementControllerImpl;
 	private static ChargingControllerImpl chargingControllerImpl;
 	private static DischargingControllerImpl dischargingControllerImpl;
+	private static PredictiveAnalysisImpl pa;
 
 	public static void main(String[] args) {
 		psmc = PowerSavingModeControllerImpl.getInstance();
@@ -24,7 +26,8 @@ public class tempUI {
 		thermalManagementControllerImpl = ThermalManagementControllerImpl.getInstance();
 		chargingControllerImpl=ChargingControllerImpl.getInstance();
 		dischargingControllerImpl=DischargingControllerImpl.getInstance();
-
+		pa = PredictiveAnalysisImpl.getInstance();
+		
 		HCI();
 	}
 
@@ -44,6 +47,7 @@ public class tempUI {
 				break;
 			case "a":
 				// Run Predictive Analysis System
+				pa.CallPredictiveAnalysis();
 				break;
 			case "c":
 				// Run Charging System
@@ -59,6 +63,14 @@ public class tempUI {
 				break;
 			case "all":
 				// Run everything
+				psmc.CallPowerSavingSystem();
+				thermalManagementControllerImpl.callThermalManagementSystem();
+				chargingControllerImpl.callChargingSystem();
+				dischargingControllerImpl.callDischargingSystem();
+				pa.CallPredictiveAnalysis();			
+				fd.CallFaultDetectiomSystem();
+				
+				
 				break;
 			case "toggle":
 				// Toggles Power Saving Mode
