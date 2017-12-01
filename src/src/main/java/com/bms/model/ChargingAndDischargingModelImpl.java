@@ -21,6 +21,7 @@ public class ChargingAndDischargingModelImpl implements ChargingAndDischargingMo
 		if (batteryPercentage <= 5) {
 			warnUser("Battery is critically low, please charge to continue");
 			warnUser("Power saving mode started");
+			PowerSavingModeControllerImpl.getInstance().setPowerSavingEnabled(true);
 			PowerSavingModeControllerImpl.getInstance().CallPowerSavingSystem();
 		} else if (batteryPercentage == 100) {
 			warnUser("Battery is full, please unplug");

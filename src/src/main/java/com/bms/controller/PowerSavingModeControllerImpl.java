@@ -27,8 +27,8 @@ public class PowerSavingModeControllerImpl implements PowerSavingModeController{
 		// Get State of Charge
 		stateOfCharge = sensor.getStateOfCharge();
 		
-		model.CheckPowerSavingStatus(powerSavingEnabled, stateOfCharge);
-		model.SetOptimalTemperature(powerSavingEnabled);
+		model.CheckPowerSavingStatus(isPowerSavingEnabled(), stateOfCharge);
+		model.SetOptimalTemperature(isPowerSavingEnabled());
 	}
 
 	@Override
@@ -38,16 +38,24 @@ public class PowerSavingModeControllerImpl implements PowerSavingModeController{
 
 	@Override
 	public void TogglePowerSavingMode() {
-		powerSavingEnabled = !powerSavingEnabled;
+		setPowerSavingEnabled(!isPowerSavingEnabled());
 		if(stateOfCharge <= 0.2f) {
-			powerSavingEnabled = true;
+			setPowerSavingEnabled(true);
 		}
 		
-		print.printMessage("Power Saving Mode is " + powerSavingEnabled);
+		print.printMessage("Power Saving Mode is " + isPowerSavingEnabled());
 	}
 
 	public static PowerSavingModeControllerImpl getInstance() {
 		return instance;
+	}
+
+	public boolean isPowerSavingEnabled() {
+		return powerSavingEnabled;
+	}
+
+	public void setPowerSavingEnabled(boolean powerSavingEnabled) {
+		this.powerSavingEnabled = powerSavingEnabled;
 	}
 	
 }

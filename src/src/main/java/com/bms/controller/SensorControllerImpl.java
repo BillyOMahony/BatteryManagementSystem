@@ -52,7 +52,7 @@ public class SensorControllerImpl implements SensorController {
 	@Override
 	public float getBatterPercentage() {
 		// TODO Auto-generated method stub
-		return 70;
+		return 0;
 	}
 
 	@Override
