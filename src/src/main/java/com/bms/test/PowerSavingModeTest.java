@@ -14,13 +14,21 @@ class PowerSavingModeTest {
 	void test() {
 		
 		PowerSavingModeControllerImpl psm = PowerSavingModeControllerImpl.getInstance();
+		psm.CallPowerSavingSystem();
 		
-		float[] InitialOptimalTempRange = psm.GetOptimalTemperature();
-		float[] ExpectedOptimalTempRange = {20.f, 30.f};
+		float[] ExpectedOptimalTempRange = {30.f, 40.f};
 		float[] IncorrectRangeExample = {1.f, 2.f};
+
+		assertTrue(Arrays.equals(psm.GetOptimalTemperature(), ExpectedOptimalTempRange), "Arrays are not identical");
 		
-		assertTrue(Arrays.equals(InitialOptimalTempRange, ExpectedOptimalTempRange), "Arrays are not identical");
+		psm.TogglePowerSavingMode();
+		psm.CallPowerSavingSystem();
 		
+		ExpectedOptimalTempRange[0] = 20.f;
+		ExpectedOptimalTempRange[1] = 30.f;
+
+		assertTrue(Arrays.equals(psm.GetOptimalTemperature(), ExpectedOptimalTempRange), "Arrays are not identical");
+				
 		// This one fails
 		//assertTrue(Arrays.equals(InitialOptimalTempRange, IncorrectRangeExample), "Arrays are not identical");		
 		
