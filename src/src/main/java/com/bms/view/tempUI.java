@@ -9,6 +9,7 @@ import com.bms.controller.FaultDetectionImpl;
 import com.bms.controller.PowerSavingModeController;
 import com.bms.controller.PowerSavingModeControllerImpl;
 import com.bms.controller.PredictiveAnalysisImpl;
+import com.bms.controller.Reminder;
 import com.bms.controller.ThermalManagementControllerImpl;
 
 public class tempUI {
@@ -19,6 +20,7 @@ public class tempUI {
 	private static ChargingControllerImpl chargingControllerImpl;
 	private static DischargingControllerImpl dischargingControllerImpl;
 	private static PredictiveAnalysisImpl pa;
+	private static Reminder reminder;
 
 	public static void main(String[] args) {
 		psmc = PowerSavingModeControllerImpl.getInstance();
@@ -27,11 +29,17 @@ public class tempUI {
 		chargingControllerImpl=ChargingControllerImpl.getInstance();
 		dischargingControllerImpl=DischargingControllerImpl.getInstance();
 		pa = PredictiveAnalysisImpl.getInstance();
+		new Reminder(5);
+        System.out.println("Task scheduled.");
+	}
+	
+	public static void HCI() {
 		
-		HCI();
+				thermalManagementControllerImpl.callThermalManagementSystem();
+				
 	}
 
-	static void HCI() {
+	/*static void HCI() {
 		Scanner scanner = new Scanner(System.in);
 		while (true) {
 			String input = scanner.nextLine();
@@ -83,5 +91,5 @@ public class tempUI {
 			}
 		}
 	}
-
+*/
 }
