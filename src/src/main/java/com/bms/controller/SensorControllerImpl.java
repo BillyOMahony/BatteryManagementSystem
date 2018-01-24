@@ -1,17 +1,19 @@
 package com.bms.controller;
 
+import java.util.Random;
+
 public class SensorControllerImpl implements SensorController {
 
-	float CoolantPressure = 0.0f;
-	float CoolantVelocity = 0.0f;
-	float BatteryTemperature = 50.f;
-	float StateOfCharge = 0.5f;
-	float Voltage = 0.f;
-	float Current = 0.f;
-	float CoolantCurrent = 0.f;
-	float DistanceTravelled = 8008.5f;
-	
-	
+	float coolantPressure = 0.0f;
+	float coolantVelocity = 0.0f;
+	float batteryTemperature = 50.f;
+	float stateOfCharge = 0.5f;
+	float voltage = 0.f;
+	float current = 0.f;
+	float coolantCurrent = 0.f;
+	float distanceTravelled = 8008.5f;
+	float batteryPercentage = 0.5f;
+
 	private static final SensorControllerImpl instance = new SensorControllerImpl();
 
 	private SensorControllerImpl() {
@@ -28,46 +30,45 @@ public class SensorControllerImpl implements SensorController {
 
 	@Override
 	public float getCoolantPressure() {
-		// TODO Auto-generated method stub
-		return CoolantPressure;
+
+		return coolantPressure;
 	}
 
 	@Override
 	public float getCoolantVelocity() {
-		// TODO Auto-generated method stub
-		return CoolantVelocity;
+
+		return coolantVelocity;
 	}
 
 	@Override
 	public float getBatteryTemperature() {
-		// TODO Auto-generated method stub
-		return BatteryTemperature;
+
+		return batteryTemperature;
 	}
 
 	@Override
 	public float getStateOfCharge() {
-		// TODO Auto-generated method stub
 		// StateOfCharge should be between 0 and 1.
 		// 1 = 100%, 0 = 0%
 
-		return StateOfCharge;
+		return stateOfCharge;
 	}
 
 	@Override
 	public boolean isBreakChargeEnabled() {
-		// TODO Auto-generated method stub
+
 		return isBreakChargingEnabled;
 	}
 
 	@Override
 	public float getBatterPercentage() {
-		// TODO Auto-generated method stub
-		return 0.5f;
+
+		return batteryPercentage;
 	}
 
 	@Override
 	public boolean isCharging() {
-		// TODO Auto-generated method stub
+
 		return isCharging;
 	}
 
@@ -81,66 +82,99 @@ public class SensorControllerImpl implements SensorController {
 
 	@Override
 	public float getVoltage() {
-		// TODO Auto-generated method stub
-		return Voltage;
+
+		return voltage;
 	}
 
 	@Override
 	public float getCurrent() {
-		// TODO Auto-generated method stub
-		return Current;
-	}
-	public float getCoolantCurrent() {
-		// TODO Auto-generated method stub
-		return CoolantCurrent;
-	}
 
+		return current;
+	}
+	@Override
+	public float getCoolantCurrent() {
+
+		return coolantCurrent;
+	}
+	
+	@Override
+	public void setCoolantCurrent(float newCoolantCurrent) {
+
+		coolantCurrent = newCoolantCurrent;
+	}
 	@Override
 	public float getDistanceTravelled() {
-		// TODO Auto-generated method stub
-		return DistanceTravelled;
+
+		return distanceTravelled;
 	}
 
 	@Override
 	public void setCoolantPressure(float newCoolantPressure) {
-		// TODO Auto-generated method stub
-		CoolantPressure = newCoolantPressure;
+
+		coolantPressure = newCoolantPressure;
 	}
 
 	@Override
 	public void setCoolantVelocity(float newCoolantVelocity) {
-		// TODO Auto-generated method stub
-		CoolantVelocity = newCoolantVelocity;
+
+		coolantVelocity = newCoolantVelocity;
 	}
 
 	@Override
 	public void setBatteryTemperature(float newBatteryTemperature) {
-		// TODO Auto-generated method stub
-		BatteryTemperature = newBatteryTemperature;
+
+		batteryTemperature = newBatteryTemperature;
 	}
 
 	@Override
 	public void setStateOfCharge(float newStateOfCharge) {
-		// TODO Auto-generated method stub
-		StateOfCharge = newStateOfCharge;
+
+		stateOfCharge = newStateOfCharge;
 	}
 
 	@Override
 	public void setDistanceTravelled(float newDistanceTravelled) {
-		// TODO Auto-generated method stub
-		DistanceTravelled = newDistanceTravelled;
+
+		distanceTravelled = newDistanceTravelled;
 	}
 
 	@Override
 	public void setVolage(float newVoltage) {
-		// TODO Auto-generated method stub
-		Voltage = newVoltage;
+
+		voltage = newVoltage;
 	}
 
 	@Override
 	public void setCurrent(float newCurrent) {
-		// TODO Auto-generated method stub
-		Current = newCurrent;
+
+		current = newCurrent;
 	}
-	
+
+	@Override
+	public void setBatteryPercentage(float batteryPercentage) {
+
+		this.batteryPercentage = batteryPercentage;
+	}
+
+	public float generateRandomNumbers(float min, float max) {
+		Random r = new Random();
+		float random = min + r.nextFloat() * (max - min);
+		return random;
+	}
+	public double generateRandomDoubleNumbers(double min, double max) {
+		Random r = new Random();
+		double random = min + r.nextDouble() * (max - min);
+		return random;
+	}
+	public void setRandomValues() {
+		setCoolantPressure(generateRandomNumbers(0.0f, 99.9f));
+		setCoolantVelocity(generateRandomNumbers(0.0f, 99.9f));
+		setBatteryTemperature(generateRandomNumbers(0.0f, 100.0f));
+		setStateOfCharge(generateRandomNumbers(0.0f, 99.9f));
+		setVolage(generateRandomNumbers(0.0f, 99.9f));
+		setCurrent(generateRandomNumbers(0.0f, 99.9f));
+		setCoolantCurrent(generateRandomNumbers(0.0f, 99.9f));
+		setDistanceTravelled(generateRandomNumbers(0.0f, 99999.9f));
+		setBatteryPercentage(generateRandomNumbers(0.0f, 100.0f));
+	}
 }
