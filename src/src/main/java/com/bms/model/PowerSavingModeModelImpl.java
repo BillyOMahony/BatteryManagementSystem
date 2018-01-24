@@ -15,15 +15,19 @@ public class PowerSavingModeModelImpl implements PowerSavingModeModel{
 	String PSMessage;
 	
 	@Override
-	public void CheckPowerSavingStatus(boolean powerSavingEnabled, float stateOfCharge) {
+	public boolean CheckPowerSavingStatus(boolean powerSavingEnabled, float stateOfCharge) {
 		PSMessage = "";
+		boolean powerSavingModeEnabled;
 		if(powerSavingEnabled || stateOfCharge <= .2f) {
 			PSMessage = "Power Saving Mode Enabled";
+			powerSavingModeEnabled = true;
 		}else{
 			PSMessage = "Power Saving Mode Disabled";
+			powerSavingModeEnabled = false;
 		}
 		
 		print.printMessage(PSMessage);
+		return powerSavingModeEnabled;
 	}
 	
 	@Override
