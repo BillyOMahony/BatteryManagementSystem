@@ -13,6 +13,7 @@ class PowerSavingModeTest {
 	@Test
 	void test() {
 		
+		// Power saving mode off by default.
 		PowerSavingModeControllerImpl psm = PowerSavingModeControllerImpl.getInstance();
 		psm.CallPowerSavingSystem();
 		
@@ -21,6 +22,7 @@ class PowerSavingModeTest {
 
 		assertTrue(Arrays.equals(psm.GetOptimalTemperature(), ExpectedOptimalTempRange), "Arrays are not identical");
 		
+		// Toggles power saving mode, Optimal Temperature values should change
 		psm.TogglePowerSavingMode();
 		psm.CallPowerSavingSystem();
 		

@@ -3,12 +3,20 @@ package com.bms.controller;
 public interface SensorController {
 
 	public float getCoolantPressure();
+	
+	public void setCoolantPressure(float newCoolantPressure);
 
 	public float getCoolantVelocity();
+	
+	public void setCoolantVelocity(float newCoolantVelocity);
 
 	public float getBatteryTemperature();
+	
+	public void setBatteryTemperature(float newBatteryTemperature);
 
 	public float getStateOfCharge();
+	
+	public void setStateOfCharge(float newStateOfCharge);
 
 	/**
 	 * sensor inputs for charging and discharging
@@ -20,9 +28,15 @@ public interface SensorController {
 	public boolean isCharging();
 
 	public float getDistanceTravelled();
+	
+	public void setDistanceTravelled(float newDistanceTravelled);
 
 	public float getVoltage();
+	
+	public void setVolage(float newVoltage);
 
 	public float getCurrent();
+	
+	public void setCurrent(float newCurrent);
 
 }
