@@ -6,6 +6,11 @@ public class SensorControllerImpl implements SensorController {
 	float CoolantVelocity = 0.0f;
 	float BatteryTemperature = 50.f;
 	float StateOfCharge = 0.5f;
+	float Voltage = 0.f;
+	float Current = 0.f;
+	float CoolantCurrent = 0.f;
+	float DistanceTravelled = 8008.5f;
+	
 	
 	private static final SensorControllerImpl instance = new SensorControllerImpl();
 
@@ -77,65 +82,65 @@ public class SensorControllerImpl implements SensorController {
 	@Override
 	public float getVoltage() {
 		// TODO Auto-generated method stub
-		return 50;
+		return Voltage;
 	}
 
 	@Override
 	public float getCurrent() {
 		// TODO Auto-generated method stub
-		return 100;
+		return Current;
 	}
 	public float getCoolantCurrent() {
 		// TODO Auto-generated method stub
-		return 0.2f;
+		return CoolantCurrent;
 	}
 
 	@Override
 	public float getDistanceTravelled() {
 		// TODO Auto-generated method stub
-		return 8008.5f;
+		return DistanceTravelled;
 	}
 
 	@Override
 	public void setCoolantPressure(float newCoolantPressure) {
 		// TODO Auto-generated method stub
-		
+		CoolantPressure = newCoolantPressure;
 	}
 
 	@Override
 	public void setCoolantVelocity(float newCoolantVelocity) {
 		// TODO Auto-generated method stub
-		
+		CoolantVelocity = newCoolantVelocity;
 	}
 
 	@Override
 	public void setBatteryTemperature(float newBatteryTemperature) {
 		// TODO Auto-generated method stub
-		
+		BatteryTemperature = newBatteryTemperature;
 	}
 
 	@Override
 	public void setStateOfCharge(float newStateOfCharge) {
 		// TODO Auto-generated method stub
-		
+		StateOfCharge = newStateOfCharge;
 	}
 
 	@Override
 	public void setDistanceTravelled(float newDistanceTravelled) {
 		// TODO Auto-generated method stub
-		
+		DistanceTravelled = newDistanceTravelled;
 	}
 
 	@Override
 	public void setVolage(float newVoltage) {
 		// TODO Auto-generated method stub
-		
+		Voltage = newVoltage;
 	}
 
 	@Override
 	public void setCurrent(float newCurrent) {
 		// TODO Auto-generated method stub
-		
+		Current = newCurrent;
 	}
 	
 }
