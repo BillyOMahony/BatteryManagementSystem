@@ -9,7 +9,7 @@ public class ThermalManagementModelImpl implements ThermalManagementModel{
 	@Override
 	public boolean checkTemperature(float temperature) {
 		// TODO Auto-generated method stub
-		if(temperature > 90.0f) {
+		if(temperature > 90.0f && temperature < -18.0f) {
 			return true;
 		}
 		return false;

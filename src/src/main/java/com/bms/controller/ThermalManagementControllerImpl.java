@@ -39,6 +39,7 @@ public class ThermalManagementControllerImpl implements ThermalManagementControl
 	@Override
 	public void callThermalManagementSystem() {
 		// TODO Auto-generated method stub
+		try {
 		temperature = sensor.getBatteryTemperature();
 		velocity = sensor.getCoolantVelocity();
 		pressure = sensor.getCoolantPressure();
@@ -48,6 +49,11 @@ public class ThermalManagementControllerImpl implements ThermalManagementControl
 		
 		tempFlag = model.Compare(temperature, optimalTemp);
 		updateView();
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Exception : "+ e);
+		}
 	}
 
 	public void updateView(){	
