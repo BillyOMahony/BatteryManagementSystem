@@ -33,6 +33,30 @@ public class ThermalManagementTest {
 	}
 	
 	@Test
+	void testValidLowTemperatureBoundary() {
+		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+		Float tempertaure = -18.0f;
+		sensor.setBatteryTemperature(tempertaure);
+		// Power saving mode off by default.
+		ThermalManagementControllerImpl controllerImpl = ThermalManagementControllerImpl.getInstance();
+		System.out.println("Temperature is " +tempertaure);
+		controllerImpl.callThermalManagementSystem();	
+		System.out.println("\n");
+	}
+	
+	@Test
+	void testValidHighTemperatureBoundary() {
+		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+		Float tempertaure = 90.0f;
+		sensor.setBatteryTemperature(tempertaure);
+		// Power saving mode off by default.
+		ThermalManagementControllerImpl controllerImpl = ThermalManagementControllerImpl.getInstance();
+		System.out.println("Temperature is " +tempertaure);
+		controllerImpl.callThermalManagementSystem();	
+		System.out.println("\n");
+	}
+	
+	@Test
 	void testInvalidHighTemperatureBoundary() {
 		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
 		Float tempertaure = 91.0f;
