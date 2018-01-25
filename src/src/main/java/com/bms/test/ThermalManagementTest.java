@@ -1,13 +1,8 @@
 package com.bms.test;
 
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Arrays;
-
 import org.junit.jupiter.api.Test;
 
-import com.bms.controller.PowerSavingModeControllerImpl;
 import com.bms.controller.SensorControllerImpl;
 import com.bms.controller.ThermalManagementControllerImpl;
 
