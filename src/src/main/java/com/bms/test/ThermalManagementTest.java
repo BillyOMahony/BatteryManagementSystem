@@ -9,23 +9,51 @@ import com.bms.controller.ThermalManagementControllerImpl;
 public class ThermalManagementTest {
 
 	@Test
-	void testInvalidTemperature() {
+	void testInvalidLowTemperature() {
 		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-		sensor.setBatteryTemperature(-200.0f);
+		Float tempertaure = -200.0f;
+		sensor.setBatteryTemperature(tempertaure);
 		// Power saving mode off by default.
 		ThermalManagementControllerImpl controllerImpl = ThermalManagementControllerImpl.getInstance();
-		
-		controllerImpl.callThermalManagementSystem();		
+		System.out.println("Temperature is " +tempertaure);
+		controllerImpl.callThermalManagementSystem();
+		System.out.println("\n");
 	}
 	
 	@Test
-	void testInvalidTemperature2() {
+	void testInvalidLowTemperatureBoundary() {
 		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-		sensor.setBatteryTemperature(200.0f);
+		Float tempertaure = -20.0f;
+		sensor.setBatteryTemperature(tempertaure);
 		// Power saving mode off by default.
 		ThermalManagementControllerImpl controllerImpl = ThermalManagementControllerImpl.getInstance();
-		
-		controllerImpl.callThermalManagementSystem();		
+		System.out.println("Temperature is " +tempertaure);
+		controllerImpl.callThermalManagementSystem();	
+		System.out.println("\n");
+	}
+	
+	@Test
+	void testInvalidHighTemperatureBoundary() {
+		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+		Float tempertaure = 91.0f;
+		sensor.setBatteryTemperature(tempertaure);
+		// Power saving mode off by default.
+		ThermalManagementControllerImpl controllerImpl = ThermalManagementControllerImpl.getInstance();
+		System.out.println("Temperature is " +tempertaure);
+		controllerImpl.callThermalManagementSystem();	
+		System.out.println("\n");
+	}
+	
+	@Test
+	void testInvalidHighTemperature() {
+		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+		Float tempertaure = 200.0f;
+		sensor.setBatteryTemperature(tempertaure);
+		// Power saving mode off by default.
+		ThermalManagementControllerImpl controllerImpl = ThermalManagementControllerImpl.getInstance();
+		System.out.println("Temperature is " +tempertaure);
+		controllerImpl.callThermalManagementSystem();
+		System.out.println("\n");
 	}
 	
 	@Test
@@ -35,7 +63,8 @@ public class ThermalManagementTest {
 		// Power saving mode off by default.
 		ThermalManagementControllerImpl controllerImpl = ThermalManagementControllerImpl.getInstance();
 		
-		controllerImpl.callThermalManagementSystem();		
+		controllerImpl.callThermalManagementSystem();
+		System.out.println("\n");
 	}
 	
 	@Test
@@ -45,16 +74,19 @@ public class ThermalManagementTest {
 		// Power saving mode off by default.
 		ThermalManagementControllerImpl controllerImpl = ThermalManagementControllerImpl.getInstance();
 		
-		controllerImpl.callThermalManagementSystem();		
+		controllerImpl.callThermalManagementSystem();	
+		System.out.println("\n");
 	}
 	
 	@Test
 	void testValidTemperatureNoChange() {
 		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-		sensor.setBatteryTemperature(30.0f);
+		Float temperature = 30.0f;
+		sensor.setBatteryTemperature(temperature);
 		// Power saving mode off by default.
 		ThermalManagementControllerImpl controllerImpl = ThermalManagementControllerImpl.getInstance();
-		
-		controllerImpl.callThermalManagementSystem();		
+		System.out.println("Temperature is" + temperature);
+		controllerImpl.callThermalManagementSystem();	
+		System.out.println("\n");
 	}
 }
