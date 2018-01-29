@@ -18,6 +18,9 @@ public class PowerSavingModeModelImpl implements PowerSavingModeModel{
 	public boolean CheckPowerSavingStatus(boolean powerSavingEnabled, float stateOfCharge) {
 		PSMessage = "";
 		boolean powerSavingModeEnabled;
+		
+		System.out.println("\nSoC = " + stateOfCharge + " PSE = " + powerSavingEnabled);
+		
 		if(powerSavingEnabled || stateOfCharge <= .2f) {
 			PSMessage = "Power Saving Mode Enabled";
 			powerSavingModeEnabled = true;
