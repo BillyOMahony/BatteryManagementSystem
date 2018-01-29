@@ -11,25 +11,8 @@ import com.bms.controller.SensorControllerImpl;
 
 class PowerSavingModeTest {
 	
-	/*
-	 * Checks that if power saving mode is on, then toggled off, and battery percentage is over 20%
-	 * then Optimal Temp Range is 30 - 40
-	 */
-	@Test
-	void testPSMOnOffBatteryOverTwenty() {
-		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-		PowerSavingModeControllerImpl psm = PowerSavingModeControllerImpl.getInstance();
-
-		sensor.setStateOfCharge(.25f);
-		psm.setPowerSavingEnabled(true);
-		psm.TogglePowerSavingMode();
-		psm.CallPowerSavingSystem();
-				
-		float[] ExpectedOptimalTempRange = {30.f, 40.f};
-
-		assertTrue(Arrays.equals(psm.GetOptimalTemperature(), ExpectedOptimalTempRange), "Arrays are not identical");		
-	}
-	
+	SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+	PowerSavingModeControllerImpl psm = PowerSavingModeControllerImpl.getInstance();
 	
 	/*
 	 * Checks that if power saving mode is off, and battery percentage is over 20%
@@ -37,8 +20,6 @@ class PowerSavingModeTest {
 	 */
 	@Test
 	void testPSMOffBatteryOverTwenty() {
-		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-		PowerSavingModeControllerImpl psm = PowerSavingModeControllerImpl.getInstance();
 
 		sensor.setStateOfCharge(.25f);
 		psm.setPowerSavingEnabled(false);
@@ -55,8 +36,6 @@ class PowerSavingModeTest {
 	 */
 	@Test
 	void testPSMOnBatteryOverTwenty() {
-		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-		PowerSavingModeControllerImpl psm = PowerSavingModeControllerImpl.getInstance();
 
 		sensor.setStateOfCharge(.25f);
 		psm.setPowerSavingEnabled(true);
@@ -73,8 +52,6 @@ class PowerSavingModeTest {
 	 */
 	@Test
 	void testPSMOffBatteryUnderTwenty() {
-		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-		PowerSavingModeControllerImpl psm = PowerSavingModeControllerImpl.getInstance();
 
 		sensor.setStateOfCharge(.15f);
 		psm.setPowerSavingEnabled(false);
@@ -93,8 +70,6 @@ class PowerSavingModeTest {
 	 */
 	@Test
 	void testPSMOnBatteryUnderTwenty() {
-		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-		PowerSavingModeControllerImpl psm = PowerSavingModeControllerImpl.getInstance();
 
 		sensor.setStateOfCharge(.15f);
 		psm.setPowerSavingEnabled(true);
@@ -111,8 +86,6 @@ class PowerSavingModeTest {
 	 */
 	@Test
 	void testPSMOffOnBatteryOverTwenty() {
-		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-		PowerSavingModeControllerImpl psm = PowerSavingModeControllerImpl.getInstance();
 
 		sensor.setStateOfCharge(.25f);
 		psm.setPowerSavingEnabled(false);
@@ -131,8 +104,6 @@ class PowerSavingModeTest {
 	 */
 	@Test
 	void testPSMOffOnBatteryUnderTwenty() {
-		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-		PowerSavingModeControllerImpl psm = PowerSavingModeControllerImpl.getInstance();
 
 		sensor.setStateOfCharge(.15f);
 		psm.setPowerSavingEnabled(false);
@@ -151,8 +122,6 @@ class PowerSavingModeTest {
 	 */
 	@Test
 	void testPSMOnOffBatteryUnderTwenty() {
-		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-		PowerSavingModeControllerImpl psm = PowerSavingModeControllerImpl.getInstance();
 
 		sensor.setStateOfCharge(.15f);
 		psm.setPowerSavingEnabled(true);
@@ -163,4 +132,29 @@ class PowerSavingModeTest {
 
 		assertTrue(Arrays.equals(psm.GetOptimalTemperature(), ExpectedOptimalTempRange), "Arrays are not identical");		
 	}
+	
+	
+	/*
+	 * Checks that if power saving mode is on, then toggled off, and battery percentage is over 20%
+	 * then Optimal Temp Range is 30 - 40
+	 */
+	@Test
+	void testPSMOnOffBatteryOverTwenty() {
+		System.out.println("\n\ntestPSMOnOffBatteryOverTwenty()\n");
+	
+		sensor.setStateOfCharge(.25f);
+		
+		psm.CallPowerSavingSystem();
+		
+		psm.setPowerSavingEnabled(true);
+				
+		psm.TogglePowerSavingMode();
+				
+		psm.CallPowerSavingSystem();
+				
+		float[] ExpectedOptimalTempRange = {30.f, 40.f};
+
+		assertTrue(Arrays.equals(psm.GetOptimalTemperature(), ExpectedOptimalTempRange), "Arrays are not identical");		
+	}
+	
 }
