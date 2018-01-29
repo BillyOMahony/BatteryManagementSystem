@@ -28,18 +28,18 @@ public class FaultDetectionModelImpl implements FaultDetectionModel {
 	}
 
 	@Override
-	public void CheckCurrent(float current) {
-		// TODO Auto-generated method stub
-		FDMessage = "";
-		if(current <= 0.4 ) {
-			FDMessage = "current is normal";
-			
-		}else{
-			FDMessage = "current is innormal ";
-		}
-		
-		print.printMessage(FDMessage);
-	}
+	 public void CheckCurrent(float current) {
+	  // TODO Auto-generated method stub
+	  FDMessage = "";
+	  if(current <= 0.4 || current >= 2) {
+	   FDMessage = "current is innormal";
+	   
+	  }else{
+	   FDMessage = "current is normal ";
+	  }
+	  
+	  print.printMessage(FDMessage);
+	 }
 
 	@Override
 	public void CheckTeperature(float temperature) {
