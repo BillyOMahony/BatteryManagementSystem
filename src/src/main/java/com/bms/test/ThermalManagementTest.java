@@ -1,6 +1,5 @@
 package com.bms.test;
 
-
 import org.junit.jupiter.api.Test;
 
 import com.bms.controller.SensorControllerImpl;
