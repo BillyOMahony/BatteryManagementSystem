@@ -25,7 +25,7 @@ public class PredictiveAnalysisImpl implements PredictiveAnalysis{
 
 	//Private Constructor to ensure only one is ever made
 	private PredictiveAnalysisImpl() {
-		database = new PredictiveAnalysisDaoImpl();
+		database = PredictiveAnalysisDaoImpl.getInstance();
 		sensor = SensorControllerImpl.getInstance();
 		view = new PrintPredictiveAnalysis();
 	}
@@ -35,15 +35,15 @@ public class PredictiveAnalysisImpl implements PredictiveAnalysis{
 	}
 
 	@Override
-	public void CallPredictiveAnalysis() {
+	public float CallPredictiveAnalysis() {
 		// TODO Auto-generated method stub
 
 		// Implement this, think of it as main
 		//Call everything here in the order they need to be called every time Predictive Analysis is called. 
 		odometerDistance = sensor.getDistanceTravelled();
 		soc = sensor.getStateOfCharge();		
-		analysisModelImpl.rangeCalculator(soc, odometerDistance);
-		
+		range = analysisModelImpl.rangeCalculator(soc, odometerDistance);
+		return range;
 	}
 
 }
