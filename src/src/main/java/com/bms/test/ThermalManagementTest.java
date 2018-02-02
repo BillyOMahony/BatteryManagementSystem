@@ -22,7 +22,7 @@ public class ThermalManagementTest {
 	@Test
 	void testInvalidLowTemperature2() {
 		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-		Float tempertaure = -20.0f;
+		float tempertaure = -20.0f;
 		sensor.setBatteryTemperature(tempertaure);
 		// Power saving mode off by default.
 		ThermalManagementControllerImpl controllerImpl = ThermalManagementControllerImpl.getInstance();
