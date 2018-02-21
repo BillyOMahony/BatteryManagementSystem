@@ -14,34 +14,66 @@ public class PredictiveAnalysisModelImpl implements PredictiveAnalysisModel{
 	private String message;
 	private PrintPredictiveAnalysis view = new PrintPredictiveAnalysis();
 
-	private PredictiveAnalysisDaoImpl database = new PredictiveAnalysisDaoImpl();;
+	private PredictiveAnalysisDaoImpl database = PredictiveAnalysisDaoImpl.getInstance();
 	
 	//Singleton
 	private static final PredictiveAnalysisModelImpl instance = new PredictiveAnalysisModelImpl();
 	
 	
 	@Override
-	public void rangeCalculator(float soc, float odometerDistance) {
+	public float rangeCalculator(float soc, float odometerDistance) {
 		range = soc * fuelEffCal(soc,odometerDistance);
+		float eff = fuelEffCal(soc,odometerDistance);
 		//sensor.getStateOfCharge() * analysisModelImpl.fuelEffCal(soc,odometerDistance)
 		range = Math.round(range);
 		
-		message = "Range is " + range + "km";
-		view.DisplayPredictiveAnalysisMessage(message);
+		//message = "Range is " + range + "km and soc is " +soc+" and fueleff is " +eff;
+		//view.DisplayPredictiveAnalysisMessage(message);
 		
-		//return range;
+		return range;
 	}
 
 	@Override
 	public float fuelEffCal(float soc, float odometerDistance) {
 		distance = odometerDistance - database.getDistance();
 		//soc = sensor.getStateOfCharge();
-		lossOfCharge = database.getSoc() - soc;
-		efficiency = (distance/1000)/lossOfCharge; //divided by 1000 to convert it km
+		
+		//efficiency = (distance/1000)/lossOfCharge; //divided by 1000 to convert it km. A tiny number is added to loss of charge to prevent division by zero
 		saveSoc(soc); //update the database with the new soc value
 		saveOdometerDistance(odometerDistance); //update the database with the new distance
 		
+		lossOfCharge = database.getSoc() - soc;
+		
+		//if loss of charge is zero or negative use the efficiency value from the database
+		if(lossOfCharge <= 0) {
+			efficiency = database.getEfficiency();
+			//return efficiency;
+		}else {
+			efficiency = (distance/1000)/lossOfCharge; //divided by 1000 to convert it km.
+			
+			/*this is for handling the case where the car is running but does
+			not move for the duration of the sampling period*/
+			if (efficiency <= 0) {
+			efficiency = database.getEfficiency();
+			}else {
+				database.setEfficiency(efficiency);
+			}
+			
+		}
+		
+		/*if (efficiency == 0) {
+			efficiency = database.getEfficiency();
+		}else {
+			database.setEfficiency(efficiency);
+		}*/
+		
+		message = "loss of charge " + lossOfCharge+ " and soc is "+database.getSoc()+
+				" and distance is "+database.getDistance()+ "efficiency is "+ efficiency; //+ "km and soc is " +soc+" and fueleff is " +eff;
+		//view.DisplayPredictiveAnalysisMessage(message);
+		
 		return efficiency;
+		
+
 	}
 	
 	public void saveOdometerDistance(float odometerDistance) {

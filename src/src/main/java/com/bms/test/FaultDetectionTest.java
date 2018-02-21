@@ -9,7 +9,6 @@ import com.bms.view.PrintFaultDetection;
 
 public class FaultDetectionTest {
  
- 
  @Test
  void testcase1() {
   SensorControllerImpl sensor = SensorControllerImpl.getInstance();
