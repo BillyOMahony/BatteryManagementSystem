@@ -4,8 +4,8 @@ public interface ThermalManagementModel {
 
 	public boolean checkTemperature(float temperature);
 	
-	public boolean checkCoolentLeak(float velocity, float Pressure);
-	
-	public boolean Compare(float temperature, float[] optimalTemperature);
+	public boolean Compare(float temperature, float[] optimalTemperature, float pressure);
+
+	public boolean checkCoolentLeak(float pressure);
 	
 }

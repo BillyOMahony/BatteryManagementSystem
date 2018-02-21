@@ -41,11 +41,11 @@ public class ThermalManagementControllerImpl implements ThermalManagementControl
 		// TODO Auto-generated method stub
 		try {
 		temperature = sensor.getBatteryTemperature();
-		/*velocity = sensor.getCoolantVelocity();
-		pressure = sensor.getCoolantPressure();*/
+		velocity = sensor.getCoolantVelocity();
+		pressure = sensor.getCoolantPressure();
 		optimalTemp = powerSavingModeController.GetOptimalTemperature();
 		
-		tempFlag = model.Compare(temperature, optimalTemp);
+		tempFlag = model.Compare(temperature, optimalTemp, pressure);
 		updateView();
 		}
 		catch (Exception e) {
@@ -57,7 +57,7 @@ public class ThermalManagementControllerImpl implements ThermalManagementControl
 	public void updateView(){	
 		String message = "";
 		if(tempFlag == true) {
-			message = "Emergency Evacuation Alert! Temperaure not in normal range";
+			message = "Emergency Evacuation Alert! Temperaure not in normal range" + pressure;
 		}else
 		{
 			message = "System is in safe range";
