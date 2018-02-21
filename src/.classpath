@@ -24,5 +24,9 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="jars/junit5-api-5.0.0-ALPHA.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="C:/Users/ankit/Documents/eclipse/plugins/ch.acanda.eclipse.pmd.core_1.10.0.201707041807.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ankit/Documents/eclipse/plugins/ch.acanda.eclipse.pmd.java_1.10.0.201707041807.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ankit/Documents/eclipse/plugins/ch.acanda.eclipse.pmd.lib_1.10.0.201707041807.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ankit/Documents/eclipse/plugins/ch.acanda.eclipse.pmd.unsupported_1.10.0.201707041807.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

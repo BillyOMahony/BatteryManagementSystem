@@ -20,13 +20,13 @@ public class ThermalManagementControllerImpl implements ThermalManagementControl
 	//Singleton
 	private static final ThermalManagementControllerImpl instance = new ThermalManagementControllerImpl();
 		
-	public ThermalManagementControllerImpl(ThermalManagementModelImpl model, PrintThermalManagement view){
+	/*public ThermalManagementControllerImpl(ThermalManagementModelImpl model, PrintThermalManagement view){
 		this.model = model;
 		this.view = view;
 		powerSavingModeController = PowerSavingModeControllerImpl.getInstance();
 		sensor = SensorControllerImpl.getInstance();
 
-	}
+	}*/
 
 	public ThermalManagementControllerImpl() {
 		// TODO Auto-generated constructor stub

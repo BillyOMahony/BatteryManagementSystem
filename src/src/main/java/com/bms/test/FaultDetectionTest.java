@@ -8,126 +8,465 @@ import com.bms.model.FaultDetectionModelImpl;
 public class FaultDetectionTest {
  
  @Test
- void testInvalidLowVoltage() {
-  
+ void testcase1() {
   SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-  Float voltage = -200.0f; 
-  sensor.setCoolantVelocity(-200);
+  Float current = 0.5f;
+  Float voltage = 12.5f; 
+  Float temperature = 33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
   FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
-  System.out.println("voltage is " +voltage);
-  fdml.CheckVelocity(voltage);
- 
- }
- 
-
- @Test
- void testInvalidHignVoltage() {
-  
-  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-  Float voltage = 200.0f;
-  sensor.setCoolantVelocity(2000);
-  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
-  System.out.println("voltage is " +voltage);
-  fdml.CheckVelocity(voltage);
-  
-
- }
- 
- 
- @Test
- void testvalidVoltage() {
-  
-  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-  Float voltage = 12.4f;
-  sensor.setCoolantVelocity(12.4f);
-  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
-  System.out.println("voltage is " +voltage);
-  fdml.CheckVelocity(voltage);
-  
-
- }
- 
- 
- 
- 
- @Test
- void testInvalidLowCurrent() {
-  
-  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-  Float current = -2.0f;
-  sensor.setCurrent(-2);
-  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
-  System.out.println("Current is " +current);
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
   fdml.CheckCurrent(current);
-  
-
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature); 
+  System.out.println("\n");
  }
-  @Test
-  void testInvalidHignCurrent() {
-   
-   SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-   Float current = 2.0f;
-   sensor.setCurrent(2);
-   FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
-   System.out.println("Current is " +current); 
-   fdml.CheckCurrent(current);
-  
-  
+ 
+ 
+ 
+ @Test
+ void testcase2() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.5f;
+  Float voltage = 12.5f; 
+  Float temperature = 99f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
  }
-  
-  @Test
-  void testvalidCurrent() {
-   
-   SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-   Float current = 0.5f;
-   sensor.setCurrent(1);
-   FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
-   System.out.println("current is " +current);
-   fdml.CheckCurrent(current);
-   
+ 
+ @Test
+ void testcase3() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.5f;
+  Float voltage = 12.5f; 
+  Float temperature = -33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase4() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 2.2f;
+  Float voltage = 12.5f; 
+  Float temperature = 33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase5() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.2f;
+  Float voltage = 12.5f; 
+  Float temperature = 33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase6() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.5f;
+  Float voltage = 13f; 
+  Float temperature = 33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase7() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.5f;
+  Float voltage = 11f; 
+  Float temperature = 33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase8() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.5f;
+  Float voltage = 11f; 
+  Float temperature = -33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase9() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.5f;
+  Float voltage = 13f; 
+  Float temperature = -33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase10() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.5f;
+  Float voltage = 13f; 
+  Float temperature = 99f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase11() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.5f;
+  Float voltage = 11f; 
+  Float temperature = 99f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase12() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.2f;
+  Float voltage = 13f; 
+  Float temperature = 33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase13() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 2.2f;
+  Float voltage = 11f; 
+  Float temperature = 33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase14() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.2f;
+  Float voltage = 11f; 
+  Float temperature = 33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase15() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 2.2f;
+  Float voltage = 13f; 
+  Float temperature = 33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase16() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.2f;
+  Float voltage = 12.5f; 
+  Float temperature = -33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase17() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 2.2f;
+  Float voltage = 12.5f; 
+  Float temperature = 99f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase18() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.2f;
+  Float voltage = 12.5f; 
+  Float temperature = 00f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase19() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 2.2f;
+  Float voltage = 12.5f; 
+  Float temperature = -33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase20() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.2f;
+  Float voltage = 11f; 
+  Float temperature = -33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase21() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 2.2f;
+  Float voltage = 13f; 
+  Float temperature = 99f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase22() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 2.2f;
+  Float voltage = 13f; 
+  Float temperature = -33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase23() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 2.2f;
+  Float voltage = 11f; 
+  Float temperature = -33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase24() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 2.2f;
+  Float voltage = 11f; 
+  Float temperature = 99f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase25() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.2f;
+  Float voltage = 13f; 
+  Float temperature = 99f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase26() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.2f;
+  Float voltage = 13f; 
+  Float temperature = -33f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
+ @Test
+ void testcase27() {
+  SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+  Float current = 0.2f;
+  Float voltage = 11f; 
+  Float temperature = 99f;
+  sensor.setCurrent(current);
+  sensor.setCoolantVelocity(voltage);
+  sensor.setBatteryTemperature(temperature);
+  FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
+  fdml.CheckCurrent(current);
+  fdml.CheckVelocity(voltage);
+  fdml.CheckTeperature(temperature);
+  System.out.println("\n");
+ }
+ 
 
-  }
-  
-  
-  @Test
-  void testinvalidHignTemperature() {
-   
-   SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-   Float temperature = 80f;
-   sensor.setBatteryTemperature(80f);
-   FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
-   System.out.println("temperature is " +temperature);
-   fdml.CheckTeperature(temperature);
-   
-
-  }
-
-  @Test
-  void testinvalidLowTemperature() {
-   
-   SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-   Float temperature = 17f;
-   sensor.setBatteryTemperature(17f);
-   FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
-   System.out.println("temperature is " +temperature);
-   fdml.CheckTeperature(temperature);
-   
-
-  }
-  
-
-  @Test
-  void testinvalidTemperature() {
-   
-   SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-   Float temperature = 33f;
-   sensor.setBatteryTemperature(33f);
-   FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
-   System.out.println("temperature is " +temperature);
-   fdml.CheckTeperature(temperature);
-   
-
-  }
-  
-  
 }
