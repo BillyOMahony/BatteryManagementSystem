@@ -18,6 +18,7 @@ class PredictiveAnalysisTest {
 	SensorControllerImpl sensor = SensorControllerImpl.getInstance();
 	PredictiveAnalysisImpl pa = PredictiveAnalysisImpl.getInstance();
 	PredictiveAnalysisDaoImpl dao = PredictiveAnalysisDaoImpl.getInstance();
+	PredictiveAnalysisModelImpl model = PredictiveAnalysisModelImpl.getInstance();
 	
 	/*
 	 *test when distance travelled is positive and loss of charge is positive
@@ -153,7 +154,7 @@ class PredictiveAnalysisTest {
 	 *test when distance travelled is negative and loss of charge is positive
 	 */
 	@Test
-	void testDistanceNegativeAndLossOfChargeZgero() {
+	void testDistanceNegativeAndLossOfChargePositive() {
 		//fail("Not yet implemented");
 		sensor.setStateOfCharge(.22f);
 		sensor.setDistanceTravelled(480000); //distance in meters - this is the odometer distance
@@ -165,5 +166,63 @@ class PredictiveAnalysisTest {
 		assertEquals(expected, output);
 	}
 	
-
+	
+	/*
+	 *test to ensure CallPredictiveAnalysis() returns a value
+	 */
+	@Test
+	void testCallPredictiveAnalysisReturnsValue() {
+		float value = pa.CallPredictiveAnalysis();
+		assertNotNull(value);
+	}
+	
+	/*
+	 *test to ensure rangeCalculator() returns a value
+	 */
+	@Test
+	void testRangeCalculatorReturnsValue() {
+		float value = model.rangeCalculator(0.2f, 1234.6f);
+		assertNotNull(value);
+	}
+	
+	/*
+	 *test to ensure fuelEffCal() returns a correct value
+	 *when lossOfCharge <= 0, value for efficiency doesn't matter
+	 */
+	@Test
+	void testFuelEffCalWhenLocLessThanZero() {
+		dao.setEfficiency(100f);
+		dao.setSoc(1);
+		float outputValue = model.fuelEffCal(-1f, 6f);
+		float expectedValue = 100;
+		assertEquals(expectedValue, outputValue);
+	}
+	
+	/*
+	 *test to ensure fuelEffCal() returns a correct value
+	 *when lossOfCharge > 0, value for efficiency <= 0
+	 */
+	@Test
+	void testFuelEffCalWhenLocLessMoreThanZeroAndEffLessThanZero() {
+		dao.setDistance(4999);
+		dao.setEfficiency(10f);
+		float outputValue = model.fuelEffCal(-0.5f, -1f);
+		float expectedValue = 10;
+		assertEquals(expectedValue, outputValue);
+	}
+	
+	/*
+	 *test to ensure fuelEffCal() returns a correct value
+	 *when lossOfCharge > 0, value for efficiency > 0
+	 */
+	@Test
+	void testFuelEffCalWhenLocLessMoreThanZeroAndEffMoreThanZero() {
+		dao.setDistance(1);
+		//dao.setEfficiency(10f);
+		dao.setSoc(1);
+		float outputValue = model.fuelEffCal(0f, 5001f);
+		float expectedValue = 5;
+		assertEquals(expectedValue, outputValue);
+	}
+	
 }
