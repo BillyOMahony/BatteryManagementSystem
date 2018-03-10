@@ -218,7 +218,6 @@ class PredictiveAnalysisTest {
 	@Test
 	void testFuelEffCalWhenLocLessMoreThanZeroAndEffMoreThanZero() {
 		dao.setDistance(1);
-		//dao.setEfficiency(10f);
 		dao.setSoc(1);
 		float outputValue = model.fuelEffCal(0f, 5001f);
 		float expectedValue = 5;
