@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import com.bms.controller.SensorControllerImpl;
 import com.bms.model.FaultDetectionModelImpl;
-import com.bms.controller.FaultDetectionImpl;
-import com.bms.view.PrintFaultDetection;
 
 public class FaultDetectionTest {
  

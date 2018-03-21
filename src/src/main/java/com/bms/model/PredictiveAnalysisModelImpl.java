@@ -23,7 +23,7 @@ public class PredictiveAnalysisModelImpl implements PredictiveAnalysisModel{
 	@Override
 	public float rangeCalculator(float soc, float odometerDistance) {
 		range = soc * fuelEffCal(soc,odometerDistance);
-		float eff = fuelEffCal(soc,odometerDistance);
+		//float eff = fuelEffCal(soc,odometerDistance);
 		//sensor.getStateOfCharge() * analysisModelImpl.fuelEffCal(soc,odometerDistance)
 		range = Math.round(range);
 		

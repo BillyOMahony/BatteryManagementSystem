@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class SensorControllerImpl implements SensorController {
 
-	float coolantPressure = 0.0f;
+	float coolantPressure = 101000.0f;
 	float coolantVelocity = 0.0f;
 	float batteryTemperature = 50.f;
 	float stateOfCharge = 0.5f;
@@ -167,7 +167,7 @@ public class SensorControllerImpl implements SensorController {
 		return random;
 	}
 	public void setRandomValues() {
-		setCoolantPressure(generateRandomNumbers(0.0f, 99.9f));
+		setCoolantPressure(generateRandomNumbers(100000.0f, 101000.9f));
 		setCoolantVelocity(generateRandomNumbers(0.0f, 99.9f));
 		setBatteryTemperature(generateRandomNumbers(0.0f, 100.0f));
 		setStateOfCharge(generateRandomNumbers(0.0f, 99.9f));

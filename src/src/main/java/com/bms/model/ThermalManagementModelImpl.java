@@ -5,10 +5,12 @@ public class ThermalManagementModelImpl implements ThermalManagementModel{
 	//Singleton
 	private static final ThermalManagementModelImpl instance = new ThermalManagementModelImpl();
 		
+	private double velocity;
+	private float coolantTemp;
 	
 	@Override
 	public boolean checkTemperature(float temperature) {
-		// TODO Auto-generated method stub
+		
 		if(temperature > 90.0f || temperature < -18.0f) {
 			return true;
 		}
@@ -16,41 +18,61 @@ public class ThermalManagementModelImpl implements ThermalManagementModel{
 	}
 
 	@Override
-	public boolean checkCoolentLeak(float velocity, float Pressure) {
-		// TODO Auto-generated method stub
+	public boolean checkCoolentLeak(float pressure) {
+
+		if(pressure > 100000 && pressure < 101325 )
+		{
+			return false;
+		}
+		else {
+			return true;
+		}
 		
-		return false;
 	}
 
 	@Override
-	public boolean Compare(float temperature, float[] optimalTemperature) {
-		boolean faultFlag = false;
-		faultFlag = checkTemperature(temperature);
-		if(faultFlag == false) {
-			if(temperature < optimalTemperature[0]) {
-				heatingMechanism(temperature);
-			}
-			if(temperature > optimalTemperature[1]) {
-				coolingMechanism(temperature);
-			}
-			if(temperature < optimalTemperature[1] && temperature >= optimalTemperature[0]) {
-				System.out.println("Thermal Management System: Temperature is in the optimal range");
-			}
-			return faultFlag;
-		}else
+	public boolean Compare(float temperature, float[] optimalTemperature, float pressure) {
+		boolean faultFlag1, faultFlag2 = false;
+		
+		faultFlag1 = checkTemperature(temperature);
+		faultFlag2 = checkCoolentLeak(pressure);
+		if(faultFlag1 == false && faultFlag2 == false) {
+			checkForHeatingCooling(temperature, optimalTemperature);
+			return false;
+		}
+		else
 		{
-			return faultFlag;
+			return true;
 		}		
 	}
 	
-	public void coolingMechanism(float temp) {
-		System.out.println("Thermal Management System: Current temperature is:" + temp);
-		System.out.println("Thermal Management System: Cooling the battery");
+	public String checkForHeatingCooling(float temperature, float[] optimalTemperature) {
+		String result = "no change";
+		if(temperature < optimalTemperature[0]) {
+			result = heatingMechanism(temperature);
+		}
+		else if(temperature > optimalTemperature[1]) {
+			result = coolingMechanism(temperature);
+		}
+		else if(temperature < optimalTemperature[1] && temperature >= optimalTemperature[0]) {
+			System.out.println("Thermal Management System: Temperature is in the optimal range");
+		}
+		return result;
 	}
 	
-	public void heatingMechanism(float temp) {
+	public String coolingMechanism(float temp) {
+		System.out.println("Thermal Management System: Current temperature is:" + temp);
+		System.out.println("Thermal Management System: Cooling the battery");
+		velocity = 0.01;
+		coolantTemp = 20;
+		return "cool";
+	}
+	
+	public String heatingMechanism(float temp) {
 		System.out.println("Thermal Management System: Current temperature is:" + temp);
 		System.out.println("Thermal Management System: Heating the battery");
+		velocity = 0.01;
+		return "heat";
 	}
 	
 	public static ThermalManagementModelImpl getInstance() {
