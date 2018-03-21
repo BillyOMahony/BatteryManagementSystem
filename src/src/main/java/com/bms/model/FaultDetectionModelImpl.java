@@ -21,7 +21,7 @@ public class FaultDetectionModelImpl implements FaultDetectionModel {
 			FDMessage = "velocity is normal";
 			
 		}else{
-			FDMessage = "velocity is innormal ";
+			FDMessage = "velocity is unnormal ";
 		}
 		
 		print.printMessage(FDMessage);
@@ -32,7 +32,7 @@ public class FaultDetectionModelImpl implements FaultDetectionModel {
 	  // TODO Auto-generated method stub
 	  FDMessage = "";
 	  if(current <= 0.4 || current >= 2) {
-	   FDMessage = "current is innormal";
+	   FDMessage = "current is unnormal";
 	   
 	  }else{
 	   FDMessage = "current is normal ";
@@ -48,7 +48,7 @@ public class FaultDetectionModelImpl implements FaultDetectionModel {
 			FDMessage = "temperature is normal";
 			
 		}else{
-			FDMessage = "temperature is innormal ";
+			FDMessage = "temperature is unnormal ";
 		}
 		
 		print.printMessage(FDMessage);
