@@ -3,9 +3,19 @@ package com.bms.test;
 import org.junit.jupiter.api.Test;
 
 import com.bms.controller.SensorControllerImpl;
+import com.bms.model.FaultDetectionModel;
 import com.bms.model.FaultDetectionModelImpl;
+import com.bms.controller.FaultDetectionImpl;
+
+
+
 
 public class FaultDetectionTest {
+	
+
+	SensorControllerImpl sensor = SensorControllerImpl.getInstance();
+	FaultDetectionImpl fdm = FaultDetectionImpl.getInstance();
+//	PowerSavingModeControllerImpl psm = PowerSavingModeControllerImpl.getInstance();
  
  @Test
  void testcase1() {
@@ -14,9 +24,11 @@ public class FaultDetectionTest {
   Float voltage = 12.5f; 
   Float temperature = 33f;
   sensor.setCurrent(current);
+  
   sensor.setCoolantVelocity(voltage);
   sensor.setBatteryTemperature(temperature);
   FaultDetectionModelImpl fdml= FaultDetectionModelImpl.getInstance();  
+  fdm.CallFaultDetectiomSystem();
   System.out.println("Current is " +current + "     " + "voltage is " +voltage + "     " +"temperature is " +temperature);
   fdml.CheckCurrent(current);
   fdml.CheckVelocity(voltage);
