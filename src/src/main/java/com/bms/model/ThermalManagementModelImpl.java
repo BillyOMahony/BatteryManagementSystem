@@ -1,49 +1,51 @@
 package com.bms.model;
 
+// class thermal management model
 public class ThermalManagementModelImpl implements ThermalManagementModel{
 
 	//Singleton
-	private static final ThermalManagementModelImpl instance = new ThermalManagementModelImpl();
+	private static final ThermalManagementModelImpl INSTANCE = new ThermalManagementModelImpl();
 		
 	private double velocity;
 	private float coolantTemp;
 	
 	@Override
 	public boolean checkTemperature(float temperature) {
-		
+		boolean flag = false;
 		if(temperature > 90.0f || temperature < -18.0f) {
-			return true;
+			flag = true;
 		}
-		return false;
+		return flag;
 	}
 
 	@Override
 	public boolean checkCoolentLeak(float pressure) {
-
+		boolean flag;
 		if(pressure > 100000 && pressure < 101325 )
 		{
-			return false;
+			flag = false;
 		}
 		else {
-			return true;
+			flag = true;
 		}
-		
+		return flag;
 	}
 
 	@Override
 	public boolean Compare(float temperature, float[] optimalTemperature, float pressure) {
 		boolean faultFlag1, faultFlag2 = false;
-		
+		boolean flag;
 		faultFlag1 = checkTemperature(temperature);
 		faultFlag2 = checkCoolentLeak(pressure);
 		if(faultFlag1 == false && faultFlag2 == false) {
 			checkForHeatingCooling(temperature, optimalTemperature);
-			return false;
+			flag = false;
 		}
 		else
 		{
-			return true;
-		}		
+			flag = true;
+		}	
+		return flag;
 	}
 	
 	public String checkForHeatingCooling(float temperature, float[] optimalTemperature) {
@@ -76,7 +78,7 @@ public class ThermalManagementModelImpl implements ThermalManagementModel{
 	}
 	
 	public static ThermalManagementModelImpl getInstance() {
-		return instance;
+		return INSTANCE;
 	}
 	
 }
