@@ -9,8 +9,11 @@ import org.junit.jupiter.api.Test;
 import com.bms.controller.PowerSavingModeControllerImpl;
 import com.bms.controller.SensorControllerImpl;
 
+import java.util.Random;
+
 class PowerSavingModeTest {
 	
+	Random rng = new Random();
 	SensorControllerImpl sensor = SensorControllerImpl.getInstance();
 	PowerSavingModeControllerImpl psm = PowerSavingModeControllerImpl.getInstance();
 	
@@ -21,7 +24,12 @@ class PowerSavingModeTest {
 	@Test
 	void testPSMOffBatteryOverTwenty() {
 
-		sensor.setStateOfCharge(.25f);
+		//Generate the random number in range min -> max
+		float max = 1.0f;
+		float min = 0.2f;
+		float stateOfCharge = min + rng.nextFloat() * (max - min);
+		
+		sensor.setStateOfCharge(stateOfCharge);
 		psm.setPowerSavingEnabled(false);
 		psm.CallPowerSavingSystem();
 		
@@ -37,7 +45,12 @@ class PowerSavingModeTest {
 	@Test
 	void testPSMOnBatteryOverTwenty() {
 
-		sensor.setStateOfCharge(.25f);
+		float max = 1.0f;
+		float min = 0.2f;
+		float stateOfCharge = min + rng.nextFloat() * (max - min);
+		
+		sensor.setStateOfCharge(stateOfCharge);
+
 		psm.setPowerSavingEnabled(true);
 		psm.CallPowerSavingSystem();
 		
@@ -52,8 +65,13 @@ class PowerSavingModeTest {
 	 */
 	@Test
 	void testPSMOffBatteryUnderTwenty() {
-
-		sensor.setStateOfCharge(.15f);
+		
+		float max = 0.2f;
+		float min = 0.0f;
+		float stateOfCharge = min + rng.nextFloat() * (max - min);
+		
+		sensor.setStateOfCharge(stateOfCharge);
+		
 		psm.setPowerSavingEnabled(false);
 		psm.CallPowerSavingSystem();
 		
@@ -70,8 +88,12 @@ class PowerSavingModeTest {
 	 */
 	@Test
 	void testPSMOnBatteryUnderTwenty() {
-
-		sensor.setStateOfCharge(.15f);
+		
+		float max = 0.2f;
+		float min = 0.0f;
+		float stateOfCharge = min + rng.nextFloat() * (max - min);
+		
+		sensor.setStateOfCharge(stateOfCharge);
 		psm.setPowerSavingEnabled(true);
 		psm.CallPowerSavingSystem();
 		
@@ -87,7 +109,12 @@ class PowerSavingModeTest {
 	@Test
 	void testPSMOffOnBatteryOverTwenty() {
 
-		sensor.setStateOfCharge(.25f);
+		float max = 1.0f;
+		float min = 0.2f;
+		float stateOfCharge = min + rng.nextFloat() * (max - min);
+		
+		sensor.setStateOfCharge(stateOfCharge);
+		
 		psm.setPowerSavingEnabled(false);
 		psm.TogglePowerSavingMode();
 		psm.CallPowerSavingSystem();
@@ -105,7 +132,11 @@ class PowerSavingModeTest {
 	@Test
 	void testPSMOffOnBatteryUnderTwenty() {
 
-		sensor.setStateOfCharge(.15f);
+		float max = 0.2f;
+		float min = 0.0f;
+		float stateOfCharge = min + rng.nextFloat() * (max - min);
+		
+		sensor.setStateOfCharge(stateOfCharge);
 		psm.setPowerSavingEnabled(false);
 		psm.TogglePowerSavingMode();
 		psm.CallPowerSavingSystem();
@@ -123,7 +154,11 @@ class PowerSavingModeTest {
 	@Test
 	void testPSMOnOffBatteryUnderTwenty() {
 
-		sensor.setStateOfCharge(.15f);
+		float max = 0.2f;
+		float min = 0.0f;
+		float stateOfCharge = min + rng.nextFloat() * (max - min);
+		
+		sensor.setStateOfCharge(stateOfCharge);
 		psm.setPowerSavingEnabled(true);
 		psm.TogglePowerSavingMode();
 		psm.CallPowerSavingSystem();
@@ -142,7 +177,11 @@ class PowerSavingModeTest {
 	void testPSMOnOffBatteryOverTwenty() {
 		System.out.println("\n\ntestPSMOnOffBatteryOverTwenty()\n");
 	
-		sensor.setStateOfCharge(.25f);
+		float max = 1.0f;
+		float min = 0.2f;
+		float stateOfCharge = min + rng.nextFloat() * (max - min);
+		
+		sensor.setStateOfCharge(stateOfCharge);
 		
 		psm.CallPowerSavingSystem();
 		

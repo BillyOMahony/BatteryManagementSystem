@@ -52,10 +52,6 @@ public class PowerSavingModeControllerImpl implements PowerSavingModeController{
 		return instance;
 	}
 
-	public boolean isPowerSavingEnabled() {
-		return powerSavingEnabled;
-	}
-
 	public void setPowerSavingEnabled(boolean powerSavingEnabled) {
 		this.powerSavingEnabled = powerSavingEnabled;
 	}
