@@ -56,7 +56,7 @@ public class ThermalManagementModelImpl implements ThermalManagementModel{
 		else if(temperature > optimalTemperature[1]) {
 			result = coolingMechanism(temperature);
 		}
-		else if(temperature < optimalTemperature[1] && temperature >= optimalTemperature[0]) {
+		else if(temperature <= optimalTemperature[1] && temperature >= optimalTemperature[0]) {
 			System.out.println("Thermal Management System: Temperature is in the optimal range");
 		}
 		return result;
