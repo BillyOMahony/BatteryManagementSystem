@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class SensorControllerImpl implements SensorController {
 
-	volatile float coolantPressure = 101000.0f;
-	volatile float coolantVelocity = 0.0f;
-	volatile float batteryTemperature = 50.f;
+	volatile float coolantPressure = 10.0f;
+	volatile float coolantVelocity = 10.0f;
+	volatile float batteryTemperature = 15.0f;
 	volatile float stateOfCharge = 0.5f;
 	volatile float voltage = 0.f;
 	volatile float current = 0.f;

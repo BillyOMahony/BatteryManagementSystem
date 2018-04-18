@@ -28,7 +28,6 @@ public class DemoBatteryController {
 		double speedDifference = currentSpeed - previousSpeed;
 		if(speedDifference > 0) {
 			
-			// Accelerating
 			
 			// Battery Temp increasing
 			sensor.setBatteryTemperature(sensor.getBatteryTemperature() + (float)(speedDifference * deltaTime * 0.01));
@@ -36,13 +35,12 @@ public class DemoBatteryController {
 			// Battery Charge Decreasing
 			sensor.setBatteryPercentage(sensor.getBatterPercentage() - (float)(speedDifference * deltaTime * .001));
 		}
-		else {
-			// Breaking
-			
+		else {			
 			// Break Charging charges battery a small amount
 			sensor.setBatteryPercentage(sensor.getBatterPercentage() + (float)(speedDifference * deltaTime * .000001));
 			
 			// Enable break charging.
+			
 			
 			// Battery Temp cooling
 			sensor.setBatteryTemperature(sensor.getBatteryTemperature() - (float)(speedDifference * deltaTime  * 0.002));
