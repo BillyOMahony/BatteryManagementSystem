@@ -11,8 +11,8 @@ public class SensorControllerImpl implements SensorController {
 	float voltage = 0.f;
 	float current = 0.f;
 	float coolantCurrent = 0.f;
-	float distanceTravelled = 8008.5f;
-	float batteryPercentage = 0.5f;
+	float distanceTravelled = 0f;
+	float batteryPercentage = 1f;
 
 	private static final SensorControllerImpl instance = new SensorControllerImpl();
 

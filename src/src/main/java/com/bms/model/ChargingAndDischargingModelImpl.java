@@ -20,20 +20,20 @@ public class ChargingAndDischargingModelImpl implements ChargingAndDischargingMo
 	public float checkBatteryLevel(float batteryPercentage, boolean ischarging) {
 		try {
 			SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-			if (batteryPercentage <= 5 && !ischarging) {
+			if (batteryPercentage <= 0.05 && !ischarging) {
 				sensor.setIsBreakCharging(true);
 				System.out.println("break charging enabled");
 				warnUser("Battery is critically low, please charge to continue");
 				warnUser("Power saving mode started");
 				PowerSavingModeControllerImpl.getInstance().setPowerSavingEnabled(true);
 				PowerSavingModeControllerImpl.getInstance().CallPowerSavingSystem();
-			} else if (batteryPercentage == 0 && ischarging) {
+			} else if (batteryPercentage == 0.0 && ischarging) {
 				sensor.setIsBreakCharging(false);
 				System.out.println("Battery being charged and break charging disabled");
 				System.out.println("Current is " + sensor.getCurrent() + "amp");
 				System.out.println("Voltage is " + sensor.getVoltage() + " volts");
 				System.out.println("Battery charging with " + batteryPercentage + "%");
-			} else if (batteryPercentage == 100 && ischarging) {
+			} else if (batteryPercentage == 1.0 && ischarging) {
 				sensor.setIsBreakCharging(false);
 				System.out.println("Battery being charged and break charging disabled");
 				System.out.println("Current is " + sensor.getCurrent() + "amp");
