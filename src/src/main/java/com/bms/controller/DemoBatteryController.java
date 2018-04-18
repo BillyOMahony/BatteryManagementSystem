@@ -14,7 +14,13 @@ public class DemoBatteryController {
 		currentRunTime -= 30; //Start speed at 0km/h
 		currentSpeed = (Math.sin(currentRunTime * 0.05) * 50) + 50; // Make speed alternate between 0 and 100
 		
-		sensor.setDistanceTravelled(sensor.getDistanceTravelled() + (float)(currentSpeed * deltaTime));
+		// Set distance traveled since last loop
+		
+		// km/h to m/s
+		float ms = (float) (currentSpeed * 1000) / 3600;
+		float dstTravThisLoop = ms * (float)deltaTime;
+		
+		sensor.setDistanceTravelled(sensor.getDistanceTravelled() + dstTravThisLoop);
 		
 		// Calculate changes to battery percentage based on speed increase.
 		double speedDifference = currentSpeed - previousSpeed;

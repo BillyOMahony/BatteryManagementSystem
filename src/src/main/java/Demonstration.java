@@ -3,6 +3,7 @@ import com.bms.controller.DischargingControllerImpl;
 import com.bms.controller.FaultDetectionImpl;
 import com.bms.controller.PowerSavingModeControllerImpl;
 import com.bms.controller.PredictiveAnalysisImpl;
+import com.bms.controller.SensorControllerImpl;
 import com.bms.controller.ThermalManagementControllerImpl;
 import com.bms.controller.DemoBatteryController;
 
@@ -28,6 +29,8 @@ public class Demonstration {
 		PredictiveAnalysisImpl predictiveAnalysis = PredictiveAnalysisImpl.getInstance();
 		ThermalManagementControllerImpl thermalManagementController = ThermalManagementControllerImpl.getInstance();
 		DemoBatteryController demoBattery = new DemoBatteryController();
+		
+		SensorControllerImpl sensor = SensorControllerImpl.getInstance();
 		
 		while(true) {
 			long currentRunTime = System.nanoTime() - startTime;
@@ -66,6 +69,7 @@ public class Demonstration {
 				tenSecondTimer -= 10;
 				
 				predictiveAnalysis.CallPredictiveAnalysis();
+				System.out.println("Distance Travelled: "+ sensor.getDistanceTravelled());
 			}
 		}
 		
