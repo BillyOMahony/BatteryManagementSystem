@@ -9,8 +9,6 @@ import com.bms.controller.DemoBatteryController;
 
 public class Demonstration {
 
-	
-	
 	public static void main(String[] args) {
 		long startTime = System.nanoTime();
 		double fiveSecondTimer = 0;
@@ -19,6 +17,8 @@ public class Demonstration {
 		double runTimeSeconds = 0;
 		double prevRunTimeSeconds = 0;
 		double deltaTime = 0;
+		
+		double halfSecondTimer = 0;
 		
 		int secondCounter = 0;
 		
@@ -40,15 +40,23 @@ public class Demonstration {
 			deltaTime = runTimeSeconds - prevRunTimeSeconds;
 			prevRunTimeSeconds = runTimeSeconds;
 			
+			halfSecondTimer += deltaTime;
+			
+			if(halfSecondTimer >= 0.124) {
+				demoBattery.CallDemoBatteryController(runTimeSeconds, halfSecondTimer);
+				halfSecondTimer -= 0.124;			
+			}
+			
 			// This is called every loop
-			demoBattery.CallDemoBatteryController(runTimeSeconds, deltaTime);
 			
 			// This runs every second
 			secondTimer += deltaTime;
 			if(secondTimer >= 1) {
 				secondTimer -= 1;
 				secondCounter ++;				
+				
 				//faultDetection.CallFaultDetectiomSystem();
+				
 				System.out.println(secondCounter);
 			}
 			
@@ -67,10 +75,13 @@ public class Demonstration {
 			tenSecondTimer += deltaTime;
 			if(tenSecondTimer >= 10) {
 				tenSecondTimer -= 10;
-				
+			
 				predictiveAnalysis.CallPredictiveAnalysis();
-				System.out.println("Distance Travelled: "+ sensor.getDistanceTravelled());
+				
+				// This print isn't synced unless there's a print in demobatterycontroller
+				System.out.println("Distance Travelled in loop " + sensor.getDistanceTravelled());
 			}
+		
 		}
 		
 	}

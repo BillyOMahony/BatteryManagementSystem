@@ -4,15 +4,15 @@ import java.util.Random;
 
 public class SensorControllerImpl implements SensorController {
 
-	float coolantPressure = 101000.0f;
-	float coolantVelocity = 0.0f;
-	float batteryTemperature = 50.f;
-	float stateOfCharge = 0.5f;
-	float voltage = 0.f;
-	float current = 0.f;
-	float coolantCurrent = 0.f;
-	float distanceTravelled = 0f;
-	float batteryPercentage = 1f;
+	volatile float coolantPressure = 101000.0f;
+	volatile float coolantVelocity = 0.0f;
+	volatile float batteryTemperature = 50.f;
+	volatile float stateOfCharge = 0.5f;
+	volatile float voltage = 0.f;
+	volatile float current = 0.f;
+	volatile float coolantCurrent = 0.f;
+	volatile float distanceTravelled = 0f;
+	volatile float batteryPercentage = 1f;
 
 	private static final SensorControllerImpl instance = new SensorControllerImpl();
 
