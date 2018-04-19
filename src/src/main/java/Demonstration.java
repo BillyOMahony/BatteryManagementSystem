@@ -69,6 +69,7 @@ public class Demonstration {
 				dischargingController.callDischargingSystem();
 				powerSavingController.CallPowerSavingSystem();
 				thermalManagementController.callThermalManagementSystem();
+				System.out.println("\nTemp" + sensor.getBatteryTemperature());
 			}
 			
 			// This runs every 10 seconds
