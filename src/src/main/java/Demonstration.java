@@ -1,5 +1,4 @@
-import com.bms.controller.ChargingControllerImpl;
-import com.bms.controller.DischargingControllerImpl;
+import com.bms.controller.ChargingDischargingControllerImpl;
 import com.bms.controller.FaultDetectionImpl;
 import com.bms.controller.PowerSavingModeControllerImpl;
 import com.bms.controller.PredictiveAnalysisImpl;
@@ -22,8 +21,7 @@ public class Demonstration {
 		
 		int secondCounter = 0;
 		
-		ChargingControllerImpl chargingController = ChargingControllerImpl.getInstance();
-		DischargingControllerImpl dischargingController = DischargingControllerImpl.getInstance();
+		ChargingDischargingControllerImpl chargingDischargingController = ChargingDischargingControllerImpl.getInstance();
 		FaultDetectionImpl faultDetection = FaultDetectionImpl.getInstance();
 		PowerSavingModeControllerImpl powerSavingController = PowerSavingModeControllerImpl.getInstance();
 		PredictiveAnalysisImpl predictiveAnalysis = PredictiveAnalysisImpl.getInstance();
@@ -65,9 +63,13 @@ public class Demonstration {
 			if(fiveSecondTimer >= 5) {
 				fiveSecondTimer -=5;
 				
-				chargingController.callChargingSystem();
-				dischargingController.callDischargingSystem();
+				System.out.println("\nCalling Charging and Discharging System");
+				chargingDischargingController.callChargingDischargingSystem();
+				
+				System.out.println("\nCalling Power Saving System");
 				powerSavingController.CallPowerSavingSystem();
+				
+				System.out.println("\nCalling Thermal Management System");
 				thermalManagementController.callThermalManagementSystem();
 				System.out.println("\nTemp" + sensor.getBatteryTemperature());
 			}
@@ -77,6 +79,7 @@ public class Demonstration {
 			if(tenSecondTimer >= 10) {
 				tenSecondTimer -= 10;
 			
+				System.out.println("\nCalling Predictive Analysis System");
 				predictiveAnalysis.CallPredictiveAnalysis();
 				
 				// This print isn't synced unless there's a print in demobatterycontroller

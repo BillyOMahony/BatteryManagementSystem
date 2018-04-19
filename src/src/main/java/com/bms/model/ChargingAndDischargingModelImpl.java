@@ -9,7 +9,7 @@ public class ChargingAndDischargingModelImpl implements ChargingAndDischargingMo
 	private static final ChargingAndDischargingModelImpl instance = new ChargingAndDischargingModelImpl();
 
 	public void warnUser(String message) {
-		System.out.println("Battery is critically low, please charge to continue:");
+		System.out.println(message);
 	}
 
 	public static ChargingAndDischargingModelImpl getInstance() {
@@ -20,34 +20,65 @@ public class ChargingAndDischargingModelImpl implements ChargingAndDischargingMo
 	public float checkBatteryLevel(float batteryPercentage, boolean ischarging) {
 		try {
 			SensorControllerImpl sensor = SensorControllerImpl.getInstance();
-			if (batteryPercentage <= 0.05 && !ischarging) {
-				sensor.setIsBreakCharging(true);
-				System.out.println("break charging enabled");
-				warnUser("Battery is critically low, please charge to continue");
-				warnUser("Power saving mode started");
-				PowerSavingModeControllerImpl.getInstance().setPowerSavingEnabled(true);
-				PowerSavingModeControllerImpl.getInstance().CallPowerSavingSystem();
-			} else if (batteryPercentage == 0.0 && ischarging) {
-				sensor.setIsBreakCharging(false);
-				System.out.println("Battery being charged and break charging disabled");
-				System.out.println("Current is " + sensor.getCurrent() + "amp");
-				System.out.println("Voltage is " + sensor.getVoltage() + " volts");
-				System.out.println("Battery charging with " + batteryPercentage + "%");
-			} else if (batteryPercentage == 1.0 && ischarging) {
-				sensor.setIsBreakCharging(false);
-				System.out.println("Battery being charged and break charging disabled");
-				System.out.println("Current is " + sensor.getCurrent() + "amp");
-				System.out.println("Voltage is " + sensor.getVoltage() + " volts");
-				warnUser("Battery is full, please unplug");
+
+			if (ischarging) {
+				if (batteryPercentage == 100) {
+					sensor.setIsBreakCharging(false);
+					warnUser("Battery is full, please unplug" + "\n" + " and break charging disabled" + "\n"
+							+ "Current is " + sensor.getCurrent() + "amp" + "\n" + "Voltage is " + sensor.getVoltage()
+							+ " volts");
+				} else {
+					sensor.setIsBreakCharging(false);
+					warnUser("Battery percentage is " + batteryPercentage + "\n and break charging disabled" + "\n"
+							+ "Current is " + sensor.getCurrent() + "amp" + "\n" + "Voltage is " + sensor.getVoltage()
+							+ " volts");
+				}
 			} else {
-				System.out
-						.println("battery percentage or charging status parameters are not appropriate, check sensors");
+				if (batteryPercentage <= 5) {
+					sensor.setIsBreakCharging(true);
+					warnUser("break charging enabled" + "\n" + "Battery is critically low, please charge to continue"
+							+ "\n" + "Power saving mode started");
+					PowerSavingModeControllerImpl.getInstance().setPowerSavingEnabled(true);
+					PowerSavingModeControllerImpl.getInstance().CallPowerSavingSystem();
+				} else {
+					sensor.setIsBreakCharging(true);
+					warnUser("break charging enabled" + "\n" + "Battery percentage is " + batteryPercentage);
+					PowerSavingModeControllerImpl.getInstance().setPowerSavingEnabled(true);
+					PowerSavingModeControllerImpl.getInstance().CallPowerSavingSystem();
+				}
 			}
+
 		} catch (Exception e) {
-			System.out.println("battery percentage or charging status parameters are in appropriate, check sensors");
+			warnUser("battery percentage or charging status parameters are in appropriate, check sensors");
 			e.printStackTrace();
 			return 0;
 		}
 		return batteryPercentage;
+	}
+
+	private void test() {
+		// if (ischarging && batteryPercentage == 0) {
+		// sensor.setIsBreakCharging(false);
+		// warnUser("Battery being charged with " + batteryPercentage + " and break
+		// charging disabled");
+		// System.out.println("Current is " + sensor.getCurrent() + "amp" + "\n" +
+		// "Voltage is "
+		// + sensor.getVoltage() + " volts");
+		// } else if (batteryPercentage <= 5 && !ischarging) {
+		// sensor.setIsBreakCharging(true);
+		// warnUser("break charging enabled" + "\n" + "Battery is critically low, please
+		// charge to continue" + "\n"
+		// + "Power saving mode started");
+		// PowerSavingModeControllerImpl.getInstance().setPowerSavingEnabled(true);
+		// PowerSavingModeControllerImpl.getInstance().CallPowerSavingSystem();
+		// } else if (batteryPercentage == 100 && ischarging) {
+		// sensor.setIsBreakCharging(false);
+		// warnUser("Battery is full, please unplug" + "\n" + "Current is " +
+		// sensor.getCurrent() + "amp" + "\n"
+		// + "Voltage is " + sensor.getVoltage() + " volts");
+		// } else {
+		// warnUser("battery percentage or charging status parameters are not
+		// appropriate, check sensors");
+		// }
 	}
 }
