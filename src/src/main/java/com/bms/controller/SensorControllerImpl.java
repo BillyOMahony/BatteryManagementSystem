@@ -7,10 +7,9 @@ public class SensorControllerImpl implements SensorController {
 	volatile float coolantPressure = 100001.0f;
 	volatile float coolantVelocity = 12.0f;
 	volatile float batteryTemperature = 15.0f;
-	volatile float stateOfCharge = 0.5f;
 	volatile float voltage = 0.f;
 	volatile float current = 1.5f;
-	volatile float coolantCurrent = 0.f;
+	volatile float coolantCurrent = 1.5f;
 	volatile float distanceTravelled = 0f;
 	volatile float batteryPercentage = 1f;
 
@@ -51,7 +50,7 @@ public class SensorControllerImpl implements SensorController {
 		// StateOfCharge should be between 0 and 1.
 		// 1 = 100%, 0 = 0%
 
-		return stateOfCharge;
+		return 0; //stateOfCharge;
 	}
 
 	@Override
@@ -129,7 +128,7 @@ public class SensorControllerImpl implements SensorController {
 	@Override
 	public void setStateOfCharge(float newStateOfCharge) {
 
-		stateOfCharge = newStateOfCharge;
+		//stateOfCharge = newStateOfCharge;
 	}
 
 	@Override

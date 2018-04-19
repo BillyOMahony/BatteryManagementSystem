@@ -63,16 +63,16 @@ public class Demonstration {
 			if(fiveSecondTimer >= 5) {
 				fiveSecondTimer -=5;
 				
-				System.out.println("\nCalling Charging and Discharging System");
+				System.out.println("\nCalling Charging and Discharging System:");
 				chargingDischargingController.callChargingDischargingSystem();
 				
-				System.out.println("\nCalling Power Saving System");
+				System.out.println("\nCalling Power Saving System:");
 				powerSavingController.CallPowerSavingSystem();
 				
-				System.out.println("\nCalling Thermal Management System");
+				System.out.println("\nCalling Thermal Management System:");
 				thermalManagementController.callThermalManagementSystem();
 				
-				System.out.println("\nCalling Fault Detection System");
+				System.out.println("\nCalling Fault Detection System:");
 				faultDetection.CallFaultDetectiomSystem();
 				
 			}
@@ -82,11 +82,11 @@ public class Demonstration {
 			if(tenSecondTimer >= 10) {
 				tenSecondTimer -= 10;
 			
-				System.out.println("\nCalling Predictive Analysis System");
+				System.out.println("\nCalling Predictive Analysis System:");
 				predictiveAnalysis.CallPredictiveAnalysis();
 				
 				// This print isn't synced unless there's a print in demobatterycontroller
-				System.out.println("Distance Travelled in loop " + sensor.getDistanceTravelled());
+				System.out.println("Distance Travelled in loop: " + sensor.getDistanceTravelled());
 			}
 		
 		}

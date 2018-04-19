@@ -25,7 +25,7 @@ public class PowerSavingModeControllerImpl implements PowerSavingModeController{
 	public void CallPowerSavingSystem() {
 	
 		// Get State of Charge
-		stateOfCharge = sensor.getStateOfCharge();		
+		stateOfCharge = sensor.getBatterPercentage();		
 		powerSavingEnabled = model.CheckPowerSavingStatus(powerSavingEnabled, stateOfCharge);
 		optimalTemperatureRange = model.SetOptimalTemperature(powerSavingEnabled);
 	}

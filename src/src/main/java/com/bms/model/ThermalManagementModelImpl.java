@@ -7,7 +7,7 @@ public class ThermalManagementModelImpl implements ThermalManagementModel{
 	private static final ThermalManagementModelImpl INSTANCE = new ThermalManagementModelImpl();
 		
 	private double velocity;
-	private String control;
+	private String control = "";
 	public String getControl() {
 		return control;
 	}
@@ -66,7 +66,9 @@ public class ThermalManagementModelImpl implements ThermalManagementModel{
 			result = coolingMechanism(temperature);
 		}
 		else if(temperature <= optimalTemperature[1] && temperature >= optimalTemperature[0]) {
+			System.out.println("Thermal Management System: Current temperature is:" + temperature);
 			System.out.println("Thermal Management System: Temperature is in the optimal range");
+			setControl("NA");
 		}
 		return result;
 	}
