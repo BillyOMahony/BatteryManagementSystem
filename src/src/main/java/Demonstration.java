@@ -71,7 +71,10 @@ public class Demonstration {
 				
 				System.out.println("\nCalling Thermal Management System");
 				thermalManagementController.callThermalManagementSystem();
-				System.out.println("\nTemp" + sensor.getBatteryTemperature());
+				
+				System.out.println("\nCalling Fault Detection System");
+				faultDetection.CallFaultDetectiomSystem();
+				
 			}
 			
 			// This runs every 10 seconds

@@ -17,7 +17,7 @@ public class FaultDetectionModelImpl implements FaultDetectionModel {
 	@Override
 	public void CheckVelocity(float velocity) {
 		FDMessage = "";
-		if(velocity <= 12.8 &&velocity >=12.0) {
+		if(velocity <= 15 &&velocity >=10.0) {
 			FDMessage = "velocity is normal";
 			
 		}else{
@@ -44,7 +44,7 @@ public class FaultDetectionModelImpl implements FaultDetectionModel {
 	@Override
 	public void CheckTeperature(float temperature) {
 		FDMessage = "";
-		if(temperature <= 75 && temperature >=20 ) {
+		if(temperature <= 90 && temperature >= 10 ) {
 			FDMessage = "temperature is normal";
 			
 		}else{

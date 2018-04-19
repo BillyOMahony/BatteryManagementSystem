@@ -1,6 +1,6 @@
 package com.bms.model;
 
-import com.bms.controller.PowerSavingModeControllerImpl;
+//import com.bms.controller.PowerSavingModeControllerImpl;
 import com.bms.controller.SensorControllerImpl;
 
 public class ChargingAndDischargingModelImpl implements ChargingAndDischargingModel {
@@ -22,7 +22,7 @@ public class ChargingAndDischargingModelImpl implements ChargingAndDischargingMo
 			SensorControllerImpl sensor = SensorControllerImpl.getInstance();
 
 			if (ischarging) {
-				if (batteryPercentage == 100) {
+				if (batteryPercentage == 1) {
 					sensor.setIsBreakCharging(false);
 					warnUser("Battery is full, please unplug" + "\n" + " and break charging disabled" + "\n"
 							+ "Current is " + sensor.getCurrent() + "amp" + "\n" + "Voltage is " + sensor.getVoltage()
@@ -34,17 +34,17 @@ public class ChargingAndDischargingModelImpl implements ChargingAndDischargingMo
 							+ " volts");
 				}
 			} else {
-				if (batteryPercentage <= 5) {
+				if (batteryPercentage <= .05) {
 					sensor.setIsBreakCharging(true);
 					warnUser("break charging enabled" + "\n" + "Battery is critically low, please charge to continue"
 							+ "\n" + "Power saving mode started");
-					PowerSavingModeControllerImpl.getInstance().setPowerSavingEnabled(true);
-					PowerSavingModeControllerImpl.getInstance().CallPowerSavingSystem();
+					//PowerSavingModeControllerImpl.getInstance().setPowerSavingEnabled(true);
+					//PowerSavingModeControllerImpl.getInstance().CallPowerSavingSystem();
 				} else {
 					sensor.setIsBreakCharging(true);
 					warnUser("break charging enabled" + "\n" + "Battery percentage is " + batteryPercentage);
-					PowerSavingModeControllerImpl.getInstance().setPowerSavingEnabled(true);
-					PowerSavingModeControllerImpl.getInstance().CallPowerSavingSystem();
+					//PowerSavingModeControllerImpl.getInstance().setPowerSavingEnabled(true);
+					//PowerSavingModeControllerImpl.getInstance().CallPowerSavingSystem();
 				}
 			}
 
