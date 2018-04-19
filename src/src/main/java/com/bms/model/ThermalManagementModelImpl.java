@@ -7,6 +7,15 @@ public class ThermalManagementModelImpl implements ThermalManagementModel{
 	private static final ThermalManagementModelImpl INSTANCE = new ThermalManagementModelImpl();
 		
 	private double velocity;
+	private String control;
+	public String getControl() {
+		return control;
+	}
+
+	public void setControl(String control) {
+		this.control = control;
+	}
+
 	private float coolantTemp;
 	
 	@Override
@@ -67,6 +76,7 @@ public class ThermalManagementModelImpl implements ThermalManagementModel{
 		System.out.println("Thermal Management System: Cooling the battery");
 		velocity = 0.01;
 		coolantTemp = 20;
+		setControl("cool");
 		return "cool";
 	}
 	
@@ -74,6 +84,7 @@ public class ThermalManagementModelImpl implements ThermalManagementModel{
 		System.out.println("Thermal Management System: Current temperature is:" + temp);
 		System.out.println("Thermal Management System: Heating the battery");
 		velocity = 0.01;
+		setControl("heat");
 		return "heat";
 	}
 	
