@@ -86,7 +86,7 @@ public class Demonstration {
 				predictiveAnalysis.CallPredictiveAnalysis();
 				
 				// This print isn't synced unless there's a print in demobatterycontroller
-				System.out.println("Distance Travelled in loop: " + sensor.getDistanceTravelled());
+				System.out.println("Distance Travelled: " + sensor.getDistanceTravelled());
 			}
 		
 		}
